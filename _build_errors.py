@@ -60,7 +60,7 @@ def groups(errors):
 
 def render_body(errors) -> str:
     g = groups(errors)
-    lines = ['  <h2 id="areas">By area <a class="h-anchor" href="#areas" aria-label="Link to this section">#</a></h2>',
+    lines = ['  <h2 id="areas">By area <a class="h-anchor" href="#areas" aria-label="Link to section: By area">#</a></h2>',
              '  <ul class="areas">']
     for area, items in g.items():
         rng = items[0][0] if len(items) == 1 else f'{items[0][0]}&ndash;{items[-1][0][4:]}'
@@ -72,7 +72,7 @@ def render_body(errors) -> str:
     for area, items in g.items():
         sid = slug(area)
         lines.append(f'  <h2 id="{sid}">{html.escape(area)} '
-                     f'<a class="h-anchor" href="#{sid}" aria-label="Link to this section">#</a></h2>')
+                     f'<a class="h-anchor" href="#{sid}" aria-label="Link to section: {html.escape(area)}">#</a></h2>')
         for code, e in items:
             lvl = e['level']
             lines += [
