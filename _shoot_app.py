@@ -34,7 +34,6 @@ import re
 import sys
 import tempfile
 import threading
-import time
 from http.server import ThreadingHTTPServer
 from pathlib import Path
 
