@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Troubleshooting · airaceGP Docs</title>
+<meta name="description" content="Fix a silent engineer, missing telemetry, microphone trouble and provider errors in airaceGP." />
+<link rel="canonical" href="https://docs.airacegp.com/troubleshooting" />
+<meta name="theme-color" content="#000000" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="airaceGP Docs" />
+<meta property="og:title" content="Troubleshooting · airaceGP Docs" />
+<meta property="og:description" content="Fix a silent engineer, missing telemetry, microphone trouble and provider errors in airaceGP." />
+<meta property="og:url" content="https://docs.airacegp.com/troubleshooting" />
+<meta property="og:image" content="https://docs.airacegp.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./" aria-label="airaceGP Docs, overview">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+        <circle cx="256" cy="256" r="244" fill="#000" stroke="#fff" stroke-width="14"/>
+        <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
+          <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
+        </g>
+      </svg>
+      <span class="brand-name">airace<span>GP</span></span>
+      <span class="brand-seg">Docs</span>
+    </a>
+    <nav class="top-links" aria-label="Site">
+      <a href="https://airacegp.com/">airacegp.com</a>
+      <a href="https://www.youtube.com/@pmech-yt">YouTube</a>
+      <a href="https://github.com/nothing-gpu">GitHub</a>
+    </nav>
+    <button class="menu-btn" id="nav-toggle" type="button" aria-controls="side" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <nav aria-label="Documentation">
+      <p class="side-label">Documentation</p>
+      <ol>
+        <li><a href="./">Overview</a></li>
+        <li><a href="setup.html">Basic setup</a></li>
+        <li><a href="ai.html">Choosing your AI</a></li>
+        <li><a href="errors.html">Error codes</a></li>
+        <li><a href="troubleshooting.html" aria-current="page">Troubleshooting</a>
+          <ol class="sub">
+            <li><a href="#silent">The engineer is silent</a></li>
+            <li><a href="#no-data">No telemetry</a></li>
+            <li><a href="#voice-problems">Voice and microphone</a></li>
+            <li><a href="#providers-faq">Providers and keys</a></li>
+            <li><a href="#other">Everything else</a></li>
+            <li><a href="#report">Reporting a problem</a></li>
+          </ol>
+        </li>
+      </ol>
+    </nav>
+    <div class="side-foot">
+      <a href="accessibility.html">Accessibility</a>
+      <a href="https://airacegp.com/">&larr; Back to airacegp.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+  <article class="doc">
+
+  <h1>Troubleshooting</h1>
+  <p class="lead">Most problems come with an AIR code on screen. Look it up in
+  <a href="errors.html">Error codes</a> first; the answers below cover the rest.</p>
+
+  <figure class="narrow">
+    <img src="img/health-notice.webp" width="523" height="258" loading="lazy"
+      alt="A notice from the AI engine: Ollama Cloud answered 429 (rate limit). Trying the next provider in your chain. Below it the fix: wait, or add another provider to your model chain with Use fallbacks on. At the bottom a link reading AIR-202, docs." />
+    <figcaption>A notice in the app. Each one shows its AIR code and what to do, and the code links to its
+    entry on this site; this one is a rate limit, <a href="errors.html#AIR-202">AIR-202</a>.</figcaption>
+  </figure>
+
+  <h2 id="silent">The engineer is silent <a class="h-anchor" href="#silent" aria-label="Link to section: The engineer is silent">#</a></h2>
+  <div class="faq">
+    <details>
+      <summary>Nothing is said at all</summary>
+      <div class="a"><p>Check, in order:</p>
+      <ul>
+        <li>The status bar reads <strong>Telemetry &middot; Live</strong>. If not, see <a href="#no-data">No telemetry</a>.</li>
+        <li>The app is not paused (Home page).</li>
+        <li>No notice says <a href="errors.html#AIR-207">AIR-207</a> (no provider can run: a key is missing) or
+        <a href="errors.html#AIR-208">AIR-208</a> (every provider failed).</li>
+        <li>The engineer's voice loaded: <a href="errors.html#AIR-402">AIR-402</a>.</li>
+      </ul></div>
+    </details>
+    <details>
+      <summary>It answers questions but rarely speaks on its own</summary>
+      <div class="a"><p>That is by design when nothing has changed:
+      the engineer may stay quiet on a check-in with nothing new. Turn up <strong>Engineer chattiness</strong>
+      or lower the <strong>Tick interval</strong> in <strong>Settings &rarr; AI</strong>. Fuel updates are
+      muted by default (<strong>Suppress fuel chatter</strong>); it still answers fuel questions and warns
+      when the margin gets tight.</p></div>
+    </details>
+    <details>
+      <summary>It goes quiet after a while</summary>
+      <div class="a"><p>Usually a free-tier limit: <a href="errors.html#AIR-202">AIR-202</a>.
+      Add a second provider to the <a href="ai.html#model-chain">model chain</a> and keep
+      <strong>Use fallbacks</strong> on.</p></div>
+    </details>
+    <details>
+      <summary>Answers arrive late</summary>
+      <div class="a"><p>A slow provider: <a href="errors.html#AIR-203">AIR-203</a>. Questions allow 8 seconds,
+      other calls 60. Move a faster provider up the chain.</p></div>
+    </details>
+  </div>
+
+  <h2 id="no-data">No telemetry <a class="h-anchor" href="#no-data" aria-label="Link to section: No telemetry">#</a></h2>
+  <div class="faq">
+    <details>
+      <summary>ACC: the Live page stays empty</summary>
+      <div class="a"><ul>
+        <li>The game in <strong>Settings &rarr; Telemetry &rarr; Sim</strong> is Assetto Corsa Competizione, and the app was restarted after changing it.</li>
+        <li>You are on track. ACC publishes nothing in the menus.</li>
+        <li>Run <code>python acc_run.py --selftest</code> on track. See <a href="setup.html#acc">Connect ACC</a>.</li>
+      </ul></div>
+    </details>
+    <details>
+      <summary>ACC: no gaps, positions or driver names</summary>
+      <div class="a"><p>Those need the Broadcasting API: turn on
+      <strong>Settings &rarr; AI &rarr; Live timing</strong> and check <code>broadcasting.json</code>, then restart ACC.
+      See <a href="setup.html#acc-live-timing">Live timing</a>.</p></div>
+    </details>
+    <details>
+      <summary>F1 25: nothing arrives</summary>
+      <div class="a"><p>In the game's telemetry settings: UDP on, port <code>20778</code>, the IP of the PC running
+      the app, and the same UDP format as <strong>Settings &rarr; Telemetry &rarr; UDP packet format</strong>. See
+      <a href="setup.html#f1-25">Connect F1 25</a>.</p></div>
+    </details>
+    <details>
+      <summary>A notice says the telemetry reader keeps crashing</summary>
+      <div class="a"><p>That is <a href="errors.html#AIR-301">AIR-301</a>. The game
+      selected in Settings must be the one you are running.</p></div>
+    </details>
+  </div>
+
+  <h2 id="voice-problems">Voice and microphone <a class="h-anchor" href="#voice-problems" aria-label="Link to section: Voice and microphone">#</a></h2>
+  <div class="faq">
+    <details>
+      <summary>It does not hear me</summary>
+      <div class="a"><ul>
+        <li>The mic is not muted and the right input is chosen in <strong>Settings &rarr; Audio</strong>.</li>
+        <li>Windows allows microphone access for desktop apps. A mic that cannot be opened is <a href="errors.html#AIR-401">AIR-401</a>.</li>
+        <li>The mic only listens while telemetry is live.</li>
+      </ul></div>
+    </details>
+    <details>
+      <summary>It mishears me</summary>
+      <div class="a"><p>Try a larger local model size, or <strong>Groq cloud</strong> transcription in
+      <strong>Settings &rarr; Audio</strong>. See <a href="setup.html#voice">Talking to the engineer</a>.</p></div>
+    </details>
+    <details>
+      <summary>Game sounds cut the engineer off</summary>
+      <div class="a"><p>Raise <code>interrupt_rms</code> in <code>web_config.json</code>, or use headphones
+      so the microphone does not pick up the game.</p></div>
+    </details>
+    <details>
+      <summary>The voice changed on its own</summary>
+      <div class="a"><p>The PC could not render the chosen voice in time, so the app switched to the
+      fast one: <a href="errors.html#AIR-403">AIR-403</a>.</p></div>
+    </details>
+    <details>
+      <summary>The engineer speaks English, not my language</summary>
+      <div class="a"><p>The language pack is not installed yet. It needs internet once;
+      check <strong>Settings &rarr; Language</strong>. Until it is ready, you hear English rather than nothing.</p></div>
+    </details>
+  </div>
+
+  <h2 id="providers-faq">Providers and keys <a class="h-anchor" href="#providers-faq" aria-label="Link to section: Providers and keys">#</a></h2>
+  <div class="faq">
+    <details>
+      <summary>My key is rejected</summary>
+      <div class="a"><p><a href="errors.html#AIR-201">AIR-201</a>. Paste a fresh key in
+      <strong>Settings &rarr; Secrets</strong>, with no spaces, and check the provider still offers the model in
+      your chain.</p></div>
+    </details>
+    <details>
+      <summary>Local Ollama does not work</summary>
+      <div class="a"><p>Start Ollama, and pull the model named in your chain. The codes are
+      <a href="errors.html#AIR-251">AIR-251</a> (not running), <a href="errors.html#AIR-252">AIR-252</a> (model not
+      installed) and <a href="errors.html#AIR-254">AIR-254</a> (not installed).</p></div>
+    </details>
+    <details>
+      <summary>Which provider should I use?</summary>
+      <div class="a"><p>Start with the <a href="ai.html#recommended-setup">recommended setup</a>:
+      a free Ollama Cloud key.</p></div>
+    </details>
+  </div>
+
+  <h2 id="other">Everything else <a class="h-anchor" href="#other" aria-label="Link to section: Everything else">#</a></h2>
+  <div class="faq">
+    <details>
+      <summary>My settings did not stick</summary>
+      <div class="a"><p><a href="errors.html#AIR-102">AIR-102</a> means the settings file could not
+      be written; <a href="errors.html#AIR-101">AIR-101</a> means it was unreadable and defaults were loaded.</p></div>
+    </details>
+    <details>
+      <summary>My phone cannot open the dashboard</summary>
+      <div class="a"><p>Turn on <strong>Settings &rarr; Network &rarr; Host dashboard on local network</strong>
+      and allow the app through the Windows firewall. See <a href="errors.html#AIR-502">AIR-502</a> and
+      <a href="errors.html#AIR-503">AIR-503</a>.</p></div>
+    </details>
+    <details>
+      <summary>A notice says a worker was restarted</summary>
+      <div class="a"><p><a href="errors.html#AIR-901">AIR-901</a>. Once is harmless; if it
+      repeats, restart the app and report it.</p></div>
+    </details>
+  </div>
+
+  <h2 id="report">Reporting a problem <a class="h-anchor" href="#report" aria-label="Link to section: Reporting a problem">#</a></h2>
+  <p>Include the AIR code and the full message, which game you run, and your model chain (provider names
+  only, never a key). A code quoted exactly is the fastest way to a fix.</p>
+
+  <nav class="pager" aria-label="Previous and next page">
+    <a class="prev" href="errors.html" aria-label="Previous: Error codes"><span class="t">&larr; Error codes</span></a>
+  </nav>
+  </article>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>airaceGP Docs &middot; your keys, your models, your data</span>
+    <span><a href="accessibility.html">Accessibility</a> &middot; <a href="https://airacegp.com/">airacegp.com</a> &middot; <a href="https://www.youtube.com/@pmech-yt">YouTube</a> &middot; <a href="https://github.com/nothing-gpu">GitHub</a></span>
+    <p class="legal">airaceGP is an unofficial fan-made tool. It is not affiliated with, endorsed by, or in partnership with
+    Kunos Simulazioni, 505 Games, Electronic Arts Inc., Codemasters, Formula One Licensing BV or the FIA.
+    F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP and related marks are trademarks of Formula One Licensing BV.
+    Assetto Corsa Competizione is a product of Kunos Simulazioni; F1 25 is a product of Electronic Arts Inc. and Codemasters.
+    Game names are used only to identify compatibility.</p>
+  </div>
+</footer>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

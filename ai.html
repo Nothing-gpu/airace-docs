@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Choosing your AI · airaceGP Docs</title>
+<meta name="description" content="The recommended free setup (Ollama Cloud with gemma4:31b), the model chain, and every AI provider airaceGP supports." />
+<link rel="canonical" href="https://docs.airacegp.com/ai" />
+<meta name="theme-color" content="#000000" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="airaceGP Docs" />
+<meta property="og:title" content="Choosing your AI · airaceGP Docs" />
+<meta property="og:description" content="The recommended free setup (Ollama Cloud with gemma4:31b), the model chain, and every AI provider airaceGP supports." />
+<meta property="og:url" content="https://docs.airacegp.com/ai" />
+<meta property="og:image" content="https://docs.airacegp.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./" aria-label="airaceGP Docs, overview">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+        <circle cx="256" cy="256" r="244" fill="#000" stroke="#fff" stroke-width="14"/>
+        <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
+          <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
+        </g>
+      </svg>
+      <span class="brand-name">airace<span>GP</span></span>
+      <span class="brand-seg">Docs</span>
+    </a>
+    <nav class="top-links" aria-label="Site">
+      <a href="https://airacegp.com/">airacegp.com</a>
+      <a href="https://www.youtube.com/@pmech-yt">YouTube</a>
+      <a href="https://github.com/nothing-gpu">GitHub</a>
+    </nav>
+    <button class="menu-btn" id="nav-toggle" type="button" aria-controls="side" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <nav aria-label="Documentation">
+      <p class="side-label">Documentation</p>
+      <ol>
+        <li><a href="./">Overview</a></li>
+        <li><a href="setup.html">Basic setup</a></li>
+        <li><a href="ai.html" aria-current="page">Choosing your AI</a>
+          <ol class="sub">
+            <li><a href="#recommended-setup">Recommended setup</a></li>
+            <li><a href="#ollama-key">Get an Ollama key</a></li>
+            <li><a href="#model-chain">The model chain</a></li>
+            <li><a href="#providers">All providers</a></li>
+            <li><a href="#keys">Where keys live</a></li>
+          </ol>
+        </li>
+        <li><a href="errors.html">Error codes</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+      </ol>
+    </nav>
+    <div class="side-foot">
+      <a href="accessibility.html">Accessibility</a>
+      <a href="https://airacegp.com/">&larr; Back to airacegp.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+  <article class="doc">
+
+  <h1>Choosing your AI</h1>
+  <p class="lead">The app computes the analysis; the model you choose turns it into words. You bring the
+  key, and you decide which providers are asked and in what order.</p>
+
+  <section class="callout rec" id="recommended-setup" aria-labelledby="rec-title">
+    <p class="callout-title" id="rec-title">Recommended setup <a class="h-anchor" href="#recommended-setup" aria-label="Link to section: Recommended setup">#</a></p>
+    <p class="rec-model">Ollama Cloud free tier, with <code>gemma4:31b</code></p>
+    <p>One free key covers everything:</p>
+    <ul>
+      <li><strong>Your questions</strong> (ACC) go to <code>gemma4:31b</code> first. In the project's
+      tests it answered 80 of 80 held-out driver questions, where <code>gpt-oss:120b</code> managed 70 to
+      74, in about 1.5 to 3 seconds.</li>
+      <li><strong>Unprompted calls</strong> use <code>gpt-oss:120b</code> on the same key.</li>
+    </ul>
+    <p>Paste the key into the <strong>Ollama Cloud</strong> card during setup and the app builds this
+    chain for you. <a href="#ollama-key">Get a key</a>.</p>
+  </section>
+
+  <h2 id="ollama-key">Get an Ollama Cloud key <a class="h-anchor" href="#ollama-key" aria-label="Link to section: Get an Ollama Cloud key">#</a></h2>
+  <ol class="steps">
+    <li>Sign in or create an account at <a href="https://ollama.com/">ollama.com</a>.</li>
+    <li>Open <strong>Settings &rarr; Keys</strong> on ollama.com and create an API key.</li>
+    <li>Add it to airaceGP, in any one of these places:
+      <ul>
+        <li>the <strong>Ollama Cloud</strong> card in the first-run wizard;</li>
+        <li><strong>Settings &rarr; Secrets</strong>, field <code>OLLAMA_API_KEY</code>, then
+        <strong>Save secrets</strong>;</li>
+        <li>the <code>.env</code> file in the app folder:
+          <div class="code"><div class="code-head"><span>.env</span></div><pre><code>OLLAMA_API_KEY=your-ollama-key</code></pre></div></li>
+      </ul>
+    </li>
+  </ol>
+  <p>A key saved in Settings works from the next AI call, with no restart. The free tier has usage
+  limits. When you reach one, the app reports <a href="errors.html#AIR-202">AIR-202</a>; a second
+  provider in your chain keeps the engineer talking.</p>
+
+  <h2 id="model-chain">The model chain <a class="h-anchor" href="#model-chain" aria-label="Link to section: The model chain">#</a></h2>
+  <p>The model chain is the list of providers the engineer asks, in order. It lives in
+  <strong>Settings &rarr; AI &rarr; Model chain</strong>. There are two lists:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>List</th><th>Used for</th><th>Time limit</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Unprompted calls</strong></td><td>Periodic check-ins and race events: everything the
+      engineer says without being asked. Also your questions in F1 25.</td><td>60 s</td></tr>
+      <tr><td><strong>Your questions</strong></td><td>What you ask the engineer in ACC.</td><td>8 s</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>The engineer asks the first entry that has its key. An entry without a key is skipped and marked
+    <em>no key</em>.</li>
+    <li><strong>Use fallbacks</strong> on: if a provider fails or is rate-limited, the next one is asked.
+    Off: only the first provider with a key is asked, and if it fails the engineer stays quiet for that
+    call.</li>
+    <li>Up to six entries per list. <strong>&uarr;</strong> and <strong>&darr;</strong> reorder,
+    <strong>&times;</strong> removes, <strong>Reset to default</strong> goes back to the chain built from
+    your keys.</li>
+    <li>Nothing outside these lists is ever called.</li>
+  </ul>
+  <figure>
+    <img src="img/settings-model-chain.webp" width="1400" height="711" loading="lazy"
+      alt="Settings, AI, Model chain editor. Unprompted calls: 1 Ollama Cloud gpt-oss:120b, 2 Groq openai/gpt-oss-120b marked no key and skipped. Your questions: 1 Ollama Cloud gemma4:31b, 2 Ollama Cloud gpt-oss:120b. Each row has up, down and remove buttons, with Add provider and Reset to default below each list, and the Use fallbacks switch on." />
+    <figcaption>The chain editor. Here Groq has no key, so it is skipped until one is added.</figcaption>
+  </figure>
+  <div class="callout note">
+    <p class="callout-title">When the questions list applies</p>
+    <p>It is used in ACC with the default engineer settings. If you move <strong>Call length</strong>
+    away from 50, or turn off <strong>Say what's on the dash</strong> or <strong>Allow the engineer to
+    stay quiet</strong>, the app switches to its full prompt and your questions use the unprompted list
+    instead.</p>
+  </div>
+  <p>Until you save a chain, the default is: Ollama Cloud <code>gpt-oss:120b</code> for unprompted calls
+  when an Ollama key is set, and <code>gemma4:31b</code> on Ollama Cloud first for questions, followed by
+  the unprompted list.</p>
+
+  <h2 id="providers">All providers <a class="h-anchor" href="#providers" aria-label="Link to section: All providers">#</a></h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Provider</th><th>Key in <code>.env</code></th><th>Preset models</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ollama Cloud</strong></td><td><code>OLLAMA_API_KEY</code></td><td><code>gpt-oss:120b</code>, <code>gemma4:31b</code>, <code>gpt-oss:20b</code></td><td>Free tier. Recommended.</td></tr>
+      <tr><td><strong>Groq</strong></td><td><code>GROQ_API_KEY</code></td><td><code>openai/gpt-oss-120b</code>, <code>openai/gpt-oss-20b</code></td><td>Very fast. The free tier allows 8k tokens a minute. The same key enables Groq transcription.</td></tr>
+      <tr><td><strong>Google Gemini</strong></td><td><code>GEMINI_API_KEY</code></td><td><code>gemini-2.5-flash</code>, <code>gemini-2.5-flash-lite</code></td><td>Free tier with a limited number of requests a day.</td></tr>
+      <tr><td><strong>OpenRouter</strong></td><td><code>OPENROUTER_API_KEY</code></td><td><code>openai/gpt-oss-120b:free</code></td><td>Free models are shared and often congested.</td></tr>
+      <tr><td><strong>Anthropic</strong></td><td><code>ANTHROPIC_API_KEY</code></td><td><code>claude-haiku-4-5-20251001</code></td><td>Paid.</td></tr>
+      <tr><td><strong>Custom</strong> (OpenAI-compatible)</td><td><code>CUSTOM_API_KEY</code></td><td>you name it</td><td>Any <code>/chat/completions</code> endpoint. Set the URL and model in <strong>Settings &rarr; AI &rarr; Custom API endpoint</strong>.</td></tr>
+      <tr><td><strong>Ollama on this PC</strong></td><td>none</td><td><code>qwen3:8b</code></td><td>No key and no internet. Shares the GPU with the game.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Any model name can be typed into a chain entry; the presets are suggestions.</p>
+  <h3 id="custom-endpoints">Other providers through Custom</h3>
+  <p>The wizard's <strong>List more providers</strong> offers OpenAI, Together AI, Fireworks, DeepInfra,
+  Cerebras, xAI, Mistral, DeepSeek and others. They all use the one <strong>Custom</strong> slot: one
+  <code>CUSTOM_API_KEY</code> and one endpoint URL. Where the wizard knows a provider's URL it fills it
+  in; otherwise enter it in <strong>Settings &rarr; AI &rarr; Custom API endpoint</strong>. A missing URL,
+  model or key is <a href="errors.html#AIR-209">AIR-209</a>.</p>
+  <h3 id="local-ollama">Ollama on your PC</h3>
+  <p>Install Ollama from <a href="https://ollama.com/">ollama.com</a>, download a model, and add
+  <strong>Ollama on this PC</strong> to your chain with that model's name. The app talks to it at
+  <code>localhost:11434</code>.</p>
+  <div class="code"><div class="code-head"><span>Command prompt</span></div><pre><code>ollama pull qwen3:8b</code></pre></div>
+  <p>A local model runs on the same GPU as the game, so frame rate and answer speed both depend on your
+  hardware. Problems here are the <a href="errors.html#area-local-ollama">AIR-25x codes</a>.</p>
+
+  <h2 id="keys">Where keys live <a class="h-anchor" href="#keys" aria-label="Link to section: Where keys live">#</a></h2>
+  <ul>
+    <li>Keys are stored in <code>.env</code> in the app folder, on your PC. They are never written to
+    <code>web_config.json</code>.</li>
+    <li><strong>Settings &rarr; Secrets</strong> edits that file. It shows only a masked preview of each
+    key, and it works only on the PC running the app, never from a phone on your network.</li>
+    <li>The race brief goes only to the providers in your model chain.</li>
+    <li>Removing a key is reported as <a href="errors.html#AIR-210">AIR-210</a>; that provider is skipped
+    until a key is added again.</li>
+  </ul>
+
+  <nav class="pager" aria-label="Previous and next page">
+    <a class="prev" href="setup.html" aria-label="Previous: Basic setup"><span class="t">&larr; Basic setup</span></a>
+    <a class="next" href="errors.html" aria-label="Next: Error codes"><span class="t">Error codes &rarr;</span></a>
+  </nav>
+  </article>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>airaceGP Docs &middot; your keys, your models, your data</span>
+    <span><a href="accessibility.html">Accessibility</a> &middot; <a href="https://airacegp.com/">airacegp.com</a> &middot; <a href="https://www.youtube.com/@pmech-yt">YouTube</a> &middot; <a href="https://github.com/nothing-gpu">GitHub</a></span>
+    <p class="legal">airaceGP is an unofficial fan-made tool. It is not affiliated with, endorsed by, or in partnership with
+    Kunos Simulazioni, 505 Games, Electronic Arts Inc., Codemasters, Formula One Licensing BV or the FIA.
+    F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP and related marks are trademarks of Formula One Licensing BV.
+    Assetto Corsa Competizione is a product of Kunos Simulazioni; F1 25 is a product of Electronic Arts Inc. and Codemasters.
+    Game names are used only to identify compatibility.</p>
+  </div>
+</footer>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

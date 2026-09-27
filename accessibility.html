@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accessibility statement · airaceGP Docs</title>
+<meta name="description" content="How accessible docs.airacegp.com is, how it was checked, and how to report a problem or ask for an accessible alternative." />
+<link rel="canonical" href="https://docs.airacegp.com/accessibility.html" />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./" aria-label="airaceGP Docs, overview">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+        <circle cx="256" cy="256" r="244" fill="#000" stroke="#fff" stroke-width="14"/>
+        <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
+          <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
+        </g>
+      </svg>
+      <span class="brand-name">airace<span>GP</span></span>
+      <span class="brand-seg">Docs</span>
+    </a>
+    <nav class="top-links" aria-label="Site">
+      <a href="https://airacegp.com/">airacegp.com</a>
+      <a href="https://www.youtube.com/@pmech-yt">YouTube</a>
+      <a href="https://github.com/nothing-gpu">GitHub</a>
+    </nav>
+    <button class="menu-btn" id="nav-toggle" type="button" aria-controls="side" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <nav aria-label="Documentation">
+      <p class="side-label">Documentation</p>
+      <ol>
+        <li><a href="./">Overview</a>
+        </li>
+        <li><a href="setup.html">Basic setup</a></li>
+        <li><a href="ai.html">Choosing your AI</a></li>
+        <li><a href="errors.html">Error codes</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+      </ol>
+    </nav>
+    <div class="side-foot">
+      <a href="accessibility.html" aria-current="page">Accessibility</a>
+      <a href="https://airacegp.com/">&larr; Back to airacegp.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+  <article class="doc">
+
+  <h1>Accessibility statement</h1>
+  <p class="lead">This statement covers the airaceGP documentation at <strong>docs.airacegp.com</strong>.
+  The website airacegp.com has <a href="https://airacegp.com/accessibility.html">its own accessibility statement</a>.</p>
+  <p>airaceGP is a private project, not a public-sector body. The Luxembourg rules on digital accessibility
+  apply to public-sector websites; we follow them voluntarily, with the same standard: EN 301 549 V3.2.1,
+  which for websites means WCAG 2.1 Level AA.</p>
+
+  <h2 id="status">Compliance status <a class="h-anchor" href="#status" aria-label="Link to section: Compliance status">#</a></h2>
+  <div class="callout rec">
+    <p class="callout-title">Fully compliant</p>
+    <p>docs.airacegp.com is fully compliant with EN 301 549 V3.2.1 and WCAG 2.1 Level AA, based on our own
+    assessment of 27 September 2026.</p>
+  </div>
+  <p>That assessment found problems, and we fixed them before publishing this statement: section links that
+  only appeared on hover and all had the same name, wide tables and code blocks that could not be scrolled
+  with the keyboard, the Escape key not returning focus to the menu button, focus landing behind the open
+  mobile menu, focus outlines hidden under neighbouring cards, and a missing skip link on the page-not-found
+  page.</p>
+  <p>No assistive-technology user has tested the docs yet. If a test with a real screen reader finds a
+  problem, we will fix it or list it below and change this status.</p>
+
+  <h2 id="not-accessible">What is not accessible <a class="h-anchor" href="#not-accessible" aria-label="Link to section: What is not accessible">#</a></h2>
+  <h3>Non-compliant content</h3>
+  <p>None known.</p>
+  <h3>Exempt content</h3>
+  <p>None on these pages. The screenshots of the app show its interface as it is and each has a text
+  alternative that gives the values shown. Links to YouTube and GitHub lead to third-party sites that we do not
+  run or control; their accessibility is up to them.</p>
+  <h3>Disproportionate burden</h3>
+  <p>None claimed: nothing in the docs is left inaccessible on grounds of cost or effort.</p>
+
+  <h2 id="method">How we assessed it <a class="h-anchor" href="#method" aria-label="Link to section: How we assessed it">#</a></h2>
+  <p>A self-assessment by the project on <strong>27 September 2026</strong>. Every page was checked at 390 and
+  1440 pixels wide, with animations allowed and with reduced motion:</p>
+  <ul>
+    <li>automated testing with axe-core 4.10 against the WCAG 2.0 and 2.1 A and AA rules, with every result axe
+    could not decide reviewed by hand;</li>
+    <li>keyboard only: every link, button and scrolling region reached in order with a visible focus indicator
+    (measured at 3:1 contrast or more), the skip link, and the mobile menu;</li>
+    <li>zoom to 200%, reflow at 320 pixels wide, and the WCAG text-spacing test;</li>
+    <li>contrast of text and controls, and a check that nothing moves or flashes;</li>
+    <li>the structure a screen reader relies on: page language, titles, landmarks, headings, link names and
+    text alternatives.</li>
+  </ul>
+  <p>The automated part is the <code>_verify_a11y.py</code> script in the docs repository. We could not yet
+  test with a real screen reader such as NVDA, JAWS or VoiceOver; that test is still to be done.</p>
+  <p class="muted">Statement prepared on 27 September 2026. Last reviewed on 27 September 2026.</p>
+
+  <h2 id="feedback">Report a problem <a class="h-anchor" href="#feedback" aria-label="Link to section: Report a problem">#</a></h2>
+  <p>If something in the docs does not work for you, or you need a page in another form, tell us:
+  <a href="https://github.com/Nothing-gpu/airace-docs/issues/new">open an issue on the docs repository</a>
+  (a free GitHub account is needed). Say which page, what you were trying to do, and, if you like, the browser
+  and assistive technology you use.</p>
+  <p>We will answer within one month.</p>
+  <!-- TODO(owner): add a contact email if desired -->
+  </article>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>airaceGP Docs &middot; your keys, your models, your data</span>
+    <span><a href="accessibility.html">Accessibility</a> &middot; <a href="https://airacegp.com/">airacegp.com</a> &middot; <a href="https://www.youtube.com/@pmech-yt">YouTube</a> &middot; <a href="https://github.com/nothing-gpu">GitHub</a></span>
+    <p class="legal">airaceGP is an unofficial fan-made tool. It is not affiliated with, endorsed by, or in partnership with
+    Kunos Simulazioni, 505 Games, Electronic Arts Inc., Codemasters, Formula One Licensing BV or the FIA.
+    F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP and related marks are trademarks of Formula One Licensing BV.
+    Assetto Corsa Competizione is a product of Kunos Simulazioni; F1 25 is a product of Electronic Arts Inc. and Codemasters.
+    Game names are used only to identify compatibility.</p>
+  </div>
+</footer>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

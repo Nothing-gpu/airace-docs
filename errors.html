@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Error codes · airaceGP Docs</title>
+<meta name="description" content="Every AIR error code airaceGP can report, what it means and what to do about it." />
+<link rel="canonical" href="https://docs.airacegp.com/errors" />
+<meta name="theme-color" content="#000000" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="airaceGP Docs" />
+<meta property="og:title" content="Error codes · airaceGP Docs" />
+<meta property="og:description" content="Every AIR error code airaceGP can report, what it means and what to do about it." />
+<meta property="og:url" content="https://docs.airacegp.com/errors" />
+<meta property="og:image" content="https://docs.airacegp.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./" aria-label="airaceGP Docs, overview">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+        <circle cx="256" cy="256" r="244" fill="#000" stroke="#fff" stroke-width="14"/>
+        <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
+          <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
+        </g>
+      </svg>
+      <span class="brand-name">airace<span>GP</span></span>
+      <span class="brand-seg">Docs</span>
+    </a>
+    <nav class="top-links" aria-label="Site">
+      <a href="https://airacegp.com/">airacegp.com</a>
+      <a href="https://www.youtube.com/@pmech-yt">YouTube</a>
+      <a href="https://github.com/nothing-gpu">GitHub</a>
+    </nav>
+    <button class="menu-btn" id="nav-toggle" type="button" aria-controls="side" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <nav aria-label="Documentation">
+      <p class="side-label">Documentation</p>
+      <ol>
+        <li><a href="./">Overview</a></li>
+        <li><a href="setup.html">Basic setup</a></li>
+        <li><a href="ai.html">Choosing your AI</a></li>
+        <li><a href="errors.html" aria-current="page">Error codes</a>
+          <ol class="sub">
+            <!-- BEGIN GENERATED SIDEBAR by _build_errors.py: do not edit by hand -->
+            <li><a href="#areas">By area</a></li>
+            <li><a href="#area-settings">Settings</a></li>
+            <li><a href="#area-ai-providers">AI providers</a></li>
+            <li><a href="#area-local-ollama">Local Ollama</a></li>
+            <li><a href="#area-telemetry">Telemetry</a></li>
+            <li><a href="#area-voice">Voice</a></li>
+            <li><a href="#area-web-server">Web server</a></li>
+            <li><a href="#area-app">App</a></li>
+            <!-- END GENERATED SIDEBAR -->
+          </ol>
+        </li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+      </ol>
+    </nav>
+    <div class="side-foot">
+      <a href="accessibility.html">Accessibility</a>
+      <a href="https://airacegp.com/">&larr; Back to airacegp.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+  <article class="doc">
+
+  <h1>Error codes</h1>
+  <p class="lead">Every problem the app reports carries a code like <code>AIR-201</code>. Each notice in
+  the app shows its code and what to do, and the code links straight to its entry on this page. API
+  error responses carry the same codes.</p>
+  <p>There are <span id="code-count">32</span> codes. Each has its own address, for example
+  <a href="errors.html#AIR-208"><code>docs.airacegp.com/errors#AIR-208</code></a>. Codes are permanent: a
+  number is never reused for a different problem. Severity is <span class="lvl error">Error</span> when
+  something stopped working, <span class="lvl warn">Warning</span> when the app carried on, and
+  <span class="lvl info">Info</span> for good news.</p>
+  <p class="gen-note">This list is generated from the app's own error registry, so it always matches the
+  codes the app can show.</p>
+  <!-- BEGIN GENERATED CODES by _build_errors.py: do not edit by hand -->
+  <h2 id="areas">By area <a class="h-anchor" href="#areas" aria-label="Link to section: By area">#</a></h2>
+  <ul class="areas">
+    <li><a href="#area-settings">Settings <span class="r">AIR-101&ndash;104</span></a></li>
+    <li><a href="#area-ai-providers">AI providers <span class="r">AIR-201&ndash;211</span></a></li>
+    <li><a href="#area-local-ollama">Local Ollama <span class="r">AIR-251&ndash;255</span></a></li>
+    <li><a href="#area-telemetry">Telemetry <span class="r">AIR-301</span></a></li>
+    <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;404</span></a></li>
+    <li><a href="#area-web-server">Web server <span class="r">AIR-501&ndash;506</span></a></li>
+    <li><a href="#area-app">App <span class="r">AIR-901</span></a></li>
+  </ul>
+  <nav class="codes-index" aria-label="All codes">
+    <a href="#AIR-101">AIR-101</a>
+    <a href="#AIR-102">AIR-102</a>
+    <a href="#AIR-103">AIR-103</a>
+    <a href="#AIR-104">AIR-104</a>
+    <a href="#AIR-201">AIR-201</a>
+    <a href="#AIR-202">AIR-202</a>
+    <a href="#AIR-203">AIR-203</a>
+    <a href="#AIR-204">AIR-204</a>
+    <a href="#AIR-205">AIR-205</a>
+    <a href="#AIR-206">AIR-206</a>
+    <a href="#AIR-207">AIR-207</a>
+    <a href="#AIR-208">AIR-208</a>
+    <a href="#AIR-209">AIR-209</a>
+    <a href="#AIR-210">AIR-210</a>
+    <a href="#AIR-211">AIR-211</a>
+    <a href="#AIR-251">AIR-251</a>
+    <a href="#AIR-252">AIR-252</a>
+    <a href="#AIR-253">AIR-253</a>
+    <a href="#AIR-254">AIR-254</a>
+    <a href="#AIR-255">AIR-255</a>
+    <a href="#AIR-301">AIR-301</a>
+    <a href="#AIR-401">AIR-401</a>
+    <a href="#AIR-402">AIR-402</a>
+    <a href="#AIR-403">AIR-403</a>
+    <a href="#AIR-404">AIR-404</a>
+    <a href="#AIR-501">AIR-501</a>
+    <a href="#AIR-502">AIR-502</a>
+    <a href="#AIR-503">AIR-503</a>
+    <a href="#AIR-504">AIR-504</a>
+    <a href="#AIR-505">AIR-505</a>
+    <a href="#AIR-506">AIR-506</a>
+    <a href="#AIR-901">AIR-901</a>
+  </nav>
+  <h2 id="area-settings">Settings <a class="h-anchor" href="#area-settings" aria-label="Link to section: Settings">#</a></h2>
+  <article class="err" id="AIR-101" aria-labelledby="AIR-101-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-101" aria-label="Link to AIR-101">AIR-101</a>
+      <h3 id="AIR-101-t">Settings file was unreadable</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>web_config.json was corrupt (a torn write, a crash mid-save, or a hand edit).</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Defaults were loaded and the broken file was kept beside it as web_config.json.corrupt-&lt;time&gt;. Re-apply your settings, or copy values back from that file.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-102" aria-labelledby="AIR-102-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-102" aria-label="Link to AIR-102">AIR-102</a>
+      <h3 id="AIR-102-t">A settings change could not be saved</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>web_config.json could not be written: it is open in another program, read-only, or the disk is full.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Close any editor holding web_config.json, check the folder is writable and has free space, then change the setting again.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-103" aria-labelledby="AIR-103-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-103" aria-label="Link to AIR-103">AIR-103</a>
+      <h3 id="AIR-103-t">Request body was not a JSON object</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Something sent the app a request whose body was not valid JSON, or was JSON but not an object.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Only relevant if you script the app: send a JSON object with Content-Type application/json.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-104" aria-labelledby="AIR-104-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-104" aria-label="Link to AIR-104">AIR-104</a>
+      <h3 id="AIR-104-t">A request field was missing or invalid</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>A request named an unknown language, voice or model, or left out a required field.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Pick the value from the list the app offers. Scripts: check the field against the API docs.</dd>
+    </dl>
+  </article>
+  <h2 id="area-ai-providers">AI providers <a class="h-anchor" href="#area-ai-providers" aria-label="Link to section: AI providers">#</a></h2>
+  <article class="err" id="AIR-201" aria-labelledby="AIR-201-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-201" aria-label="Link to AIR-201">AIR-201</a>
+      <h3 id="AIR-201-t">API key rejected</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The provider answered 401/403: the key is wrong, revoked, or lacks access to that model.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Settings &rarr; Secrets: paste a fresh key for that provider (no spaces). Check the provider still offers the model named in your model chain.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-202" aria-labelledby="AIR-202-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-202" aria-label="Link to AIR-202">AIR-202</a>
+      <h3 id="AIR-202-t">Provider rate limit reached</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The provider answered 429: you used its per-minute or per-day allowance (free tiers are small).</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Wait, or add another provider to your model chain (Settings &rarr; AI &rarr; Model chain) with Use fallbacks on, so the next one answers.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-203" aria-labelledby="AIR-203-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-203" aria-label="Link to AIR-203">AIR-203</a>
+      <h3 id="AIR-203-t">Provider timed out</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The provider did not answer in time (driver questions allow 8 s, other calls 60 s). Usually its queue is busy.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Nothing to do for a one-off. If it keeps happening, move a faster provider up your model chain.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-204" aria-labelledby="AIR-204-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-204" aria-label="Link to AIR-204">AIR-204</a>
+      <h3 id="AIR-204-t">Provider unreachable</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>No connection to the provider: no internet, a firewall, a wrong custom URL, or the provider is down.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Check your internet connection. For a custom endpoint, check its URL in Settings &rarr; AI.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-205" aria-labelledby="AIR-205-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-205" aria-label="Link to AIR-205">AIR-205</a>
+      <h3 id="AIR-205-t">Provider server error</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The provider answered with a 5xx error: a fault on its side.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Usually temporary. Keep a second provider in your model chain so the engineer keeps talking.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-206" aria-labelledby="AIR-206-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-206" aria-label="Link to AIR-206">AIR-206</a>
+      <h3 id="AIR-206-t">Unreadable reply from the model</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The model answered, but not with the JSON the engineer needs (cut off, or prose instead).</dd>
+      <dt>What to do</dt>
+      <dd class="fix">A one-off is harmless: the engineer skips that call. If a model does it often, choose another model in your model chain.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-207" aria-labelledby="AIR-207-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-207" aria-label="Link to AIR-207">AIR-207</a>
+      <h3 id="AIR-207-t">No provider in the model chain can run</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Every entry in the model chain is missing its API key (or the Custom entry has no URL), or the chain is empty.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Settings &rarr; Secrets: add a key for a provider in your chain, or Settings &rarr; AI &rarr; Model chain: add a provider you have a key for.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-208" aria-labelledby="AIR-208-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-208" aria-label="Link to AIR-208">AIR-208</a>
+      <h3 id="AIR-208-t">Every provider in the model chain failed</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Each provider the engineer tried failed; the notice names the last error's code.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Look up the code named in the message. Add another provider to your chain, and make sure Use fallbacks is on.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-209" aria-labelledby="AIR-209-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-209" aria-label="Link to AIR-209">AIR-209</a>
+      <h3 id="AIR-209-t">Custom provider is not set up</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The Custom (OpenAI-compatible) provider is missing its URL, model or key.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Settings &rarr; AI: fill in the Custom API endpoint URL and model; Settings &rarr; Secrets: add CUSTOM_API_KEY.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-210" aria-labelledby="AIR-210-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-210" aria-label="Link to AIR-210">AIR-210</a>
+      <h3 id="AIR-210-t">An API key was removed</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>A provider's key was cleared in Settings &rarr; Secrets.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">That provider is skipped until a key is added again. Nothing to do if you meant it.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-211" aria-labelledby="AIR-211-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-211" aria-label="Link to AIR-211">AIR-211</a>
+      <h3 id="AIR-211-t">Smart routing has no key</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Smart routing is on, but its small-model provider has no API key.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Add that provider's key in Settings &rarr; Secrets, or turn Smart routing off (your question chain answers instead).</dd>
+    </dl>
+  </article>
+  <h2 id="area-local-ollama">Local Ollama <a class="h-anchor" href="#area-local-ollama" aria-label="Link to section: Local Ollama">#</a></h2>
+  <article class="err" id="AIR-251" aria-labelledby="AIR-251-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-251" aria-label="Link to AIR-251">AIR-251</a>
+      <h3 id="AIR-251-t">Ollama is not running</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>A model chain entry uses Ollama on this PC, but nothing answers on localhost:11434.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Start Ollama (the app, or <code>ollama serve</code> in a terminal), or remove the local Ollama entry from your model chain.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-252" aria-labelledby="AIR-252-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-252" aria-label="Link to AIR-252">AIR-252</a>
+      <h3 id="AIR-252-t">Model not installed in Ollama</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Ollama is running but does not have the model your chain names.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Press Pull model on the notice, or run <code>ollama pull &lt;model&gt;</code>.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-253" aria-labelledby="AIR-253-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-253" aria-label="Link to AIR-253">AIR-253</a>
+      <h3 id="AIR-253-t">Model download failed</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd><code>ollama pull</code> failed: a typo in the model name, no internet, or not enough disk space.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Check the model name exists on ollama.com, your connection, and free disk space, then pull again.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-254" aria-labelledby="AIR-254-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-254" aria-label="Link to AIR-254">AIR-254</a>
+      <h3 id="AIR-254-t">Ollama is not installed</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The <code>ollama</code> command was not found on this PC.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Install Ollama from ollama.com, or use a cloud provider in your model chain instead.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-255" aria-labelledby="AIR-255-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-255" aria-label="Link to AIR-255">AIR-255</a>
+      <h3 id="AIR-255-t">Model downloaded</h3>
+      <span class="lvl info">Info</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>A model pull finished.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Nothing to fix. It is used from the next AI call.</dd>
+    </dl>
+  </article>
+  <h2 id="area-telemetry">Telemetry <a class="h-anchor" href="#area-telemetry" aria-label="Link to section: Telemetry">#</a></h2>
+  <article class="err" id="AIR-301" aria-labelledby="AIR-301-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-301" aria-label="Link to AIR-301">AIR-301</a>
+      <h3 id="AIR-301-t">Telemetry reader keeps crashing</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The process that reads the game's telemetry exits repeatedly; the notice shows its last output.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Make sure the game in Settings &rarr; General matches the one you are running. For F1 25, check the UDP port and format in the game's telemetry settings. Restart the app if it persists.</dd>
+    </dl>
+  </article>
+  <h2 id="area-voice">Voice <a class="h-anchor" href="#area-voice" aria-label="Link to section: Voice">#</a></h2>
+  <article class="err" id="AIR-401" aria-labelledby="AIR-401-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-401" aria-label="Link to AIR-401">AIR-401</a>
+      <h3 id="AIR-401-t">Microphone could not be opened</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The selected microphone is unplugged, in exclusive use by another app, or blocked by privacy settings.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Plug it in, close other apps using it, allow microphone access in Windows privacy settings, or pick another input in Settings &rarr; Audio.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-402" aria-labelledby="AIR-402-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-402" aria-label="Link to AIR-402">AIR-402</a>
+      <h3 id="AIR-402-t">Engineer voice failed to load</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The text-to-speech voice model could not be loaded, so the engineer is muted.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Settings &rarr; Voice: pick an installed voice (or install one). If you set PIPER_MODEL_PATH, check the file exists.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-403" aria-labelledby="AIR-403-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-403" aria-label="Link to AIR-403">AIR-403</a>
+      <h3 id="AIR-403-t">Switched to the fast voice</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>This PC could not render the selected voice quickly enough, so calls were arriving late.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Nothing needed. To go back, pick the voice again in Settings &rarr; Voice; close heavy apps first.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-404" aria-labelledby="AIR-404-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-404" aria-label="Link to AIR-404">AIR-404</a>
+      <h3 id="AIR-404-t">Piper voice path is invalid</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>PIPER_MODEL_PATH points to a file that is missing or is not a Piper .onnx voice.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Settings &rarr; Secrets: correct the path, or clear it to use the bundled voices.</dd>
+    </dl>
+  </article>
+  <h2 id="area-web-server">Web server <a class="h-anchor" href="#area-web-server" aria-label="Link to section: Web server">#</a></h2>
+  <article class="err" id="AIR-501" aria-labelledby="AIR-501-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-501" aria-label="Link to AIR-501">AIR-501</a>
+      <h3 id="AIR-501-t">Dashboard port unusable</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The port in Settings &rarr; General is in use by another program or not allowed.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Pick another port (e.g. 6970) in Settings &rarr; General. The dashboard keeps running on its previous port meanwhile.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-502" aria-labelledby="AIR-502-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-502" aria-label="Link to AIR-502">AIR-502</a>
+      <h3 id="AIR-502-t">Could not open the dashboard to your network</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>LAN access could not bind to all network interfaces (a firewall or another program holds the port).</dd>
+      <dt>What to do</dt>
+      <dd class="fix">LAN access was switched back off. Allow the app through your firewall, or change the port, then turn LAN access on again.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-503" aria-labelledby="AIR-503-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-503" aria-label="Link to AIR-503">AIR-503</a>
+      <h3 id="AIR-503-t">Request refused for safety</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>A request came from another website, a hostname instead of an IP address, or another device for a PC-only action.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Open the dashboard at the address the app shows (localhost or its IP). Keys and restart only work on the PC running the app.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-504" aria-labelledby="AIR-504-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-504" aria-label="Link to AIR-504">AIR-504</a>
+      <h3 id="AIR-504-t">Not found</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The page, file or API endpoint asked for does not exist in this version.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Reload the dashboard. If a bookmark is involved, open the dashboard from its start page.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-505" aria-labelledby="AIR-505-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-505" aria-label="Link to AIR-505">AIR-505</a>
+      <h3 id="AIR-505-t">Download failed</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Fetching a file from the internet (such as a voice sample) failed.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Check your internet connection and try again.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-506" aria-labelledby="AIR-506-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-506" aria-label="Link to AIR-506">AIR-506</a>
+      <h3 id="AIR-506-t">Internal error</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The app hit an unexpected error while handling a request.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Try again. If it repeats, restart the app and report the code with the detail shown.</dd>
+    </dl>
+  </article>
+  <h2 id="area-app">App <a class="h-anchor" href="#area-app" aria-label="Link to section: App">#</a></h2>
+  <article class="err" id="AIR-901" aria-labelledby="AIR-901-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-901" aria-label="Link to AIR-901">AIR-901</a>
+      <h3 id="AIR-901-t">A background worker crashed and was restarted</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>One of the app's workers (voice, AI, tick, microphone, events) raised an error. It was restarted automatically.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Nothing needed if it happens once. If it repeats, restart the app and report the code with the worker named.</dd>
+    </dl>
+  </article>
+  <!-- END GENERATED CODES -->
+
+  <nav class="pager" aria-label="Previous and next page">
+    <a class="prev" href="ai.html" aria-label="Previous: Choosing your AI"><span class="t">&larr; Choosing your AI</span></a>
+    <a class="next" href="troubleshooting.html" aria-label="Next: Troubleshooting"><span class="t">Troubleshooting &rarr;</span></a>
+  </nav>
+  </article>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>airaceGP Docs &middot; your keys, your models, your data</span>
+    <span><a href="accessibility.html">Accessibility</a> &middot; <a href="https://airacegp.com/">airacegp.com</a> &middot; <a href="https://www.youtube.com/@pmech-yt">YouTube</a> &middot; <a href="https://github.com/nothing-gpu">GitHub</a></span>
+    <p class="legal">airaceGP is an unofficial fan-made tool. It is not affiliated with, endorsed by, or in partnership with
+    Kunos Simulazioni, 505 Games, Electronic Arts Inc., Codemasters, Formula One Licensing BV or the FIA.
+    F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP and related marks are trademarks of Formula One Licensing BV.
+    Assetto Corsa Competizione is a product of Kunos Simulazioni; F1 25 is a product of Electronic Arts Inc. and Codemasters.
+    Game names are used only to identify compatibility.</p>
+  </div>
+</footer>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>
