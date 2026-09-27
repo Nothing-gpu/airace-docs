@@ -1,17 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
   <rect width="1200" height="630" fill="#000000"/>
-  <rect x="0.75" y="0.75" width="1198.5" height="628.5" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
-  <g transform="translate(96,150)">
-    <g transform="scale(0.42)">
-      <circle cx="256" cy="256" r="250" fill="none" stroke="#FFFFFF" stroke-width="10"/>
-      <g fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
-        <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
-      </g>
+  <rect x="0.5" y="0.5" width="1199" height="629" fill="none" stroke="#FFFFFF" stroke-opacity="0.2" stroke-width="1"/>
+  <g transform="translate(96,118) scale(0.3)">
+    <circle cx="256" cy="256" r="244" fill="#000000" stroke="#FFFFFF" stroke-width="14"/>
+    <g fill="none" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
+      <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
     </g>
   </g>
-  <text x="330" y="300" font-family="Arial, Helvetica, sans-serif" font-size="118" font-weight="700" fill="#FFFFFF" letter-spacing="-2">airace</text>
-  <text x="333" y="372" font-family="'Courier New', monospace" font-size="34" font-weight="500" fill="#9A9A9A" letter-spacing="2">YOUR AI RACE ENGINEER</text>
-  <rect x="96" y="470" width="70" height="4" fill="#FF2D1A"/>
-  <text x="96" y="522" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#EDEDED">Live F1 telemetry in. Engineer-style radio calls out. Free &amp; open source.</text>
+  <text x="270" y="190" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif" font-size="92" font-weight="800" fill="#FFFFFF">airace<tspan fill="#FF2D1F">GP</tspan></text>
+  <text x="96" y="360" font-family="'Barlow Condensed','Arial Narrow',Arial,sans-serif" font-size="120" font-weight="800" fill="#FFFFFF" letter-spacing="1">DOCUMENTATION</text>
+  <rect x="96" y="410" width="72" height="4" fill="#FF2D1F"/>
+  <text x="96" y="470" font-family="'Barlow',Arial,sans-serif" font-size="34" fill="#C9C9C9">Setup, choosing your AI, error codes and troubleshooting.</text>
+  <text x="96" y="524" font-family="'JetBrains Mono','Courier New',monospace" font-size="24" fill="#9A9A9A" letter-spacing="2">AI RACE ENGINEER · ACC · F1 25 · DOCS.AIRACEGP.COM</text>
 </svg>

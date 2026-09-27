@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Basic setup · airaceGP Docs</title>
+<meta name="description" content="Install airaceGP, walk the first-run wizard, connect Assetto Corsa Competizione or F1 25, and talk to your AI race engineer." />
+<link rel="canonical" href="https://docs.airacegp.com/setup" />
+<meta name="theme-color" content="#000000" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="airaceGP Docs" />
+<meta property="og:title" content="Basic setup · airaceGP Docs" />
+<meta property="og:description" content="Install airaceGP, walk the first-run wizard, connect Assetto Corsa Competizione or F1 25, and talk to your AI race engineer." />
+<meta property="og:url" content="https://docs.airacegp.com/setup" />
+<meta property="og:image" content="https://docs.airacegp.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./" aria-label="airaceGP Docs, overview">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+        <circle cx="256" cy="256" r="244" fill="#000" stroke="#fff" stroke-width="14"/>
+        <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
+          <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
+        </g>
+      </svg>
+      <span class="brand-name">airace<span>GP</span></span>
+      <span class="brand-seg">Docs</span>
+    </a>
+    <nav class="top-links" aria-label="Site">
+      <a href="https://airacegp.com/">airacegp.com</a>
+      <a href="https://www.youtube.com/@pmech-yt">YouTube</a>
+      <a href="https://github.com/nothing-gpu">GitHub</a>
+    </nav>
+    <button class="menu-btn" id="nav-toggle" type="button" aria-controls="side" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <nav aria-label="Documentation">
+      <p class="side-label">Documentation</p>
+      <ol>
+        <li><a href="./">Overview</a></li>
+        <li><a href="setup.html" aria-current="page">Basic setup</a>
+          <ol class="sub">
+            <li><a href="#requirements">What you need</a></li>
+            <li><a href="#install">Install</a></li>
+            <li><a href="#first-run">First run</a></li>
+            <li><a href="#acc">Connect ACC</a></li>
+            <li><a href="#f1-25">Connect F1 25</a></li>
+            <li><a href="#voice">Talking to the engineer</a></li>
+            <li><a href="#languages">Languages</a></li>
+            <li><a href="#phone">Dashboard on your phone</a></li>
+          </ol>
+        </li>
+        <li><a href="ai.html">Choosing your AI</a></li>
+        <li><a href="errors.html">Error codes</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+      </ol>
+    </nav>
+    <div class="side-foot">
+      <a href="https://airacegp.com/">&larr; Back to airacegp.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+  <article class="doc">
+
+  <p class="kicker">Getting started</p>
+  <h1>Basic setup</h1>
+  <p class="lead">Install the app, answer six questions, connect your game and drive. This page walks
+  through each step.</p>
+
+  <h2 id="requirements">What you need <a class="h-anchor" href="#requirements" aria-label="Link to this section">#</a></h2>
+  <ul>
+    <li>A Windows PC. airaceGP is a Windows desktop app.</li>
+    <li>Assetto Corsa Competizione or F1 25.</li>
+    <li>A microphone and headphones or speakers.</li>
+    <li>An AI provider. The <a href="ai.html#recommended-setup">recommended one</a> is free: an Ollama
+    Cloud key. You can also run a model on your own PC with Ollama and no key.</li>
+    <li>An internet connection for cloud AI, and once for each language pack you download.</li>
+  </ul>
+
+  <h2 id="install">Install <a class="h-anchor" href="#install" aria-label="Link to this section">#</a></h2>
+  <div class="callout note">
+    <p class="callout-title">Public download coming soon</p>
+    <p>The packaged Windows app is not public yet. Until it is, the app runs from its source folder with
+    Python, as below.</p>
+  </div>
+  <p>From the app's source folder (<span class="path">airacee\airacee</span>), install the dependencies and
+  start the desktop window:</p>
+  <div class="code"><div class="code-head"><span>Command prompt</span></div><pre><code><span class="c">rem in airacee\airacee</span>
+pip install -r requirements.txt
+python desktop.py</code></pre></div>
+  <p><code>desktop.py</code> starts the engineer and opens the dashboard in its own window. To run without
+  the window, start <code>run.py</code> and open the dashboard in a browser at
+  <code>http://127.0.0.1:6969</code>:</p>
+  <div class="code"><div class="code-head"><span>Command prompt</span></div><pre><code>python run.py
+<span class="c">rem optional: --no-voice (no microphone), --tick-seconds 40, --silence-seconds 2.5</span></code></pre></div>
+  <p>The dashboard port (6969) can be changed in <strong>Settings &rarr; Network</strong>. The
+  designed neural engineer voice is optional and not installed by default; the app speaks with Piper
+  without it.</p>
+
+  <h2 id="first-run">First run <a class="h-anchor" href="#first-run" aria-label="Link to this section">#</a></h2>
+  <p>The first time the app opens, a short wizard sets it up. Every answer can be changed later in
+  <strong>Settings</strong>, and <strong>Skip</strong> closes the wizard.</p>
+  <ol class="steps">
+    <li><strong>App language.</strong> Pick one of the nine languages for the interface.</li>
+    <li><strong>Your engineer's language.</strong> The same as the app, or a different one. This is the
+    language you hear on the radio.</li>
+    <li><strong>Which game?</strong> Assetto Corsa Competizione, F1 25 with the 2026 Season Pack format,
+    or F1 25 with the classic 2025 format. Older F1 games are listed as unverified.</li>
+    <li><strong>Connect a provider.</strong> Paste a key for at least one provider. Ollama Cloud and Groq
+    are shown first as the recommended combo; <strong>List more providers</strong> shows the rest.
+    Then answer <strong>If your first provider fails</strong>: <em>Try the next one</em> or <em>Stay
+    quiet</em>. The wizard shows the order it will save before you continue.</li>
+    <li><strong>How should they talk?</strong> Talkativeness (only when it matters, balanced, keep me
+    talking) and how often they check in (now and then, regularly, frequently: every 60, 40 or 20
+    seconds).</li>
+    <li><strong>Offline language pack.</strong> Only when your engineer speaks a language other than
+    English: the translation pack downloads so it works trackside with no internet. It keeps downloading
+    in the background if you continue.</li>
+  </ol>
+  <div class="shots">
+    <figure>
+      <img src="img/onboarding-language.webp" width="800" height="480" loading="lazy"
+        alt="Onboarding, Let's pick your language: a grid of the nine languages, English, Español, Italiano, Français, Deutsch, Português, Čeština, Polski and 日本語." />
+      <figcaption>Step 1: the app language. Step 2 asks the same for the engineer.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/onboarding-game.webp" width="800" height="910" loading="lazy"
+        alt="Onboarding step 3 of 5, Which game: Assetto Corsa Competizione selected and marked supported, F1 25 / 26 and F1 25 2025 supported, F1 24, F1 23, F1 22 and F1 2021 marked unverified." />
+      <figcaption>Step 3: the game. ACC, and F1 25 in either telemetry format.</figcaption>
+    </figure>
+  </div>
+  <div class="shots">
+    <figure>
+      <img src="img/onboarding-providers.webp" width="800" height="1035" loading="lazy"
+        alt="Onboarding step 4 of 5, Connect a provider: the Recommended combo box holds Ollama Cloud, with a key pasted and masked, and Groq; OpenRouter and Anthropic below, a List more providers button, and the If your first provider fails question." />
+      <figcaption>Step 4: paste a key. It is masked on screen and saved only to your local
+      <code>.env</code>.</figcaption>
+    </figure>
+    <figure>
+      <img src="img/onboarding-fallback.webp" width="800" height="1035" loading="lazy"
+        alt="The same step scrolled down: If your first provider fails, with Try the next one selected, and the preview of what will be saved. Unprompted calls: Ollama Cloud gpt-oss:120b. Your questions: Ollama Cloud gemma4:31b, then Ollama Cloud gpt-oss:120b." />
+      <figcaption>The fallback question and the model chain it will save, for an Ollama Cloud key
+      alone.</figcaption>
+    </figure>
+  </div>
+  <div class="shots">
+    <figure>
+      <img src="img/onboarding-speech.webp" width="800" height="498" loading="lazy"
+        alt="Onboarding step 5 of 5, How should they talk: Talkativeness with Only when it matters, Balanced and Keep me talking; How often they check in with Now and then, Regularly and Frequently." />
+      <figcaption>Step 5: how much the engineer talks.</figcaption>
+    </figure>
+  </div>
+
+  <h2 id="acc">Connect Assetto Corsa Competizione <a class="h-anchor" href="#acc" aria-label="Link to this section">#</a></h2>
+  <ol class="steps">
+    <li>Choose <strong>Assetto Corsa Competizione</strong> in the wizard, or later in
+    <strong>Settings &rarr; Telemetry &rarr; Sim</strong>, then restart the app. It starts its ACC reader
+    by itself.</li>
+    <li>Start ACC and <strong>get on track</strong>. ACC publishes nothing while you are in the menus.
+    Shared memory needs no game settings.</li>
+    <li>Optional check, from the app folder while you are on track:
+      <div class="code"><div class="code-head"><span>Command prompt</span></div><pre><code>python acc_run.py --selftest</code></pre></div>
+      It should end with <code>ALL SYSTEMS GOOD</code>. A corner that reads <code>SUSPECT</code> means a
+      misaligned read, not a bad setup; report it.</li>
+  </ol>
+  <h3 id="acc-live-timing">Live timing (optional)</h3>
+  <p>Shared memory does not carry gaps, standings or other drivers' names. ACC's Broadcasting API does.
+  To use it:</p>
+  <ol class="steps">
+    <li>Open <span class="path">Documents\Assetto Corsa Competizione\Config\broadcasting.json</span>.
+    The app expects ACC's shipped values:
+      <div class="code"><div class="code-head"><span>broadcasting.json</span></div><pre><code>{
+  "updListenerPort": 9000,
+  "connectionPassword": "asd",
+  "commandPassword": ""
+}</code></pre></div>
+    ACC reads this file only when it starts, so restart the game after editing it.</li>
+    <li>Turn on <strong>Settings &rarr; AI &rarr; Live timing (gaps and rivals)</strong>.</li>
+  </ol>
+  <p>If you use a different port or connection password, set <code>broadcast_port</code> and
+  <code>broadcast_password</code> to match in the app's <code>web_config.json</code>. The connection is
+  listen-only: the app has no code that can send a command to the game.</p>
+  <div class="callout note">
+    <p class="callout-title">What ACC does not provide</p>
+    <ul>
+      <li>No tyre wear figure. Tyres are judged on pressures and core temperatures.</li>
+      <li>No safety car data. The engineer will not claim one either way.</li>
+      <li>No gaps without the Broadcasting API. The app computes them from track position.</li>
+    </ul>
+  </div>
+
+  <h2 id="f1-25">Connect F1 25 <a class="h-anchor" href="#f1-25" aria-label="Link to this section">#</a></h2>
+  <ol class="steps">
+    <li>In F1 25, open <strong>Settings &rarr; Telemetry Settings</strong> and set:
+      <div class="table-wrap"><table>
+        <thead><tr><th>Setting</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>UDP Telemetry</td><td>On</td></tr>
+          <tr><td>UDP IP Address</td><td><code>127.0.0.1</code> when the app runs on the same PC; otherwise that PC's address</td></tr>
+          <tr><td>UDP Port</td><td><code>20778</code></td></tr>
+          <tr><td>UDP Format</td><td><code>2025</code>, or the 2026 Season Pack format</td></tr>
+        </tbody>
+      </table></div>
+    </li>
+    <li>In the app, set <strong>Settings &rarr; Telemetry &rarr; UDP packet format</strong> to the same
+    format as the game: <em>F1 25 (2026 Season Pack)</em> or <em>F1 25 (2025 classic)</em>. This applies
+    without a restart.</li>
+    <li>Drive. The status bar at the bottom of the dashboard reads <strong>Telemetry &middot; Live</strong>
+    while packets arrive.</li>
+  </ol>
+  <div class="callout warn">
+    <p class="callout-title">Port 20778</p>
+    <p>The app's listener uses UDP port <code>20778</code>, not the game's default 20777. The Telemetry
+    page in Settings may still show 20777; the listener uses 20778.</p>
+  </div>
+  <figure>
+    <img src="img/settings-telemetry.webp" width="1230" height="1111" loading="lazy"
+      alt="Settings, Telemetry pane: the Sim dropdown set to Assetto Corsa Competizione, the UDP packet format dropdown for F1 games set to F1 25 (2026 Season Pack), and the Record sessions switch." />
+    <figcaption>Settings &rarr; Telemetry: the game, and the UDP packet format for F1.</figcaption>
+  </figure>
+
+  <h2 id="voice">Talking to the engineer <a class="h-anchor" href="#voice" aria-label="Link to this section">#</a></h2>
+  <p>There is no button to hold. The microphone listens for your voice while telemetry is live: speak,
+  and when you stop for about 2.5 seconds the recording is transcribed and answered. The microphone is
+  released completely while the app is paused, the mic is muted, or no telemetry is arriving.</p>
+  <ul>
+    <li><strong>Interrupting.</strong> Speak over the engineer and it stops talking and listens. The
+    loudness that counts as an interruption is <code>interrupt_rms</code> in <code>web_config.json</code>;
+    raise it if game audio cuts the engineer off.</li>
+    <li><strong>Wake word.</strong> Optional, off by default: turn on <strong>Settings &rarr; Voice &rarr;
+    Wake word ("hey Bono")</strong>. Say "hey Bono" and the engineer answers "Yes?" at once. It runs
+    offline with Vosk.</li>
+    <li><strong>Transcription.</strong> <strong>Settings &rarr; Audio &rarr; Transcription engine</strong>:
+    <em>Local</em> runs faster-whisper on your PC (sizes tiny to medium; bigger is more accurate and uses
+    more CPU), <em>Groq cloud</em> is fast and accurate but needs a Groq key. Without a Groq key, or if a
+    Groq call fails, it uses Local.</li>
+    <li><strong>Devices.</strong> <strong>Settings &rarr; Audio</strong> picks the microphone, the speaker
+    and the voice volume, with a Test button.</li>
+    <li><strong>Mute and pause.</strong> <em>Mute Mic</em> and <em>Pause</em> are on the Home page.</li>
+  </ul>
+
+  <h2 id="languages">Languages <a class="h-anchor" href="#languages" aria-label="Link to this section">#</a></h2>
+  <p>The <strong>app language</strong> (the interface) and the <strong>engineer language</strong> (the
+  radio) are set separately, in the wizard or in <strong>Settings &rarr; Language</strong>. The model
+  always answers in English and the line is translated on your PC. Each language's pack downloads once
+  and then works offline. If translation is not available, you hear English.</p>
+
+  <h2 id="phone">Dashboard on your phone <a class="h-anchor" href="#phone" aria-label="Link to this section">#</a></h2>
+  <p>Turn on <strong>Settings &rarr; Network &rarr; Host dashboard on local network</strong>, then open
+  <code>http://&lt;your PC's IP&gt;:6969</code> on a phone on the same Wi-Fi. Keys, restarts and model
+  downloads work only on the PC running the app; from another device they are refused with
+  <a href="errors.html#AIR-503">AIR-503</a>.</p>
+  <figure class="phone">
+    <img src="img/dashboard-phone.webp" width="780" height="1688" loading="lazy"
+      alt="The dashboard at phone width: speed 212 km/h, last lap 2:37.165, throttle, brake and steering bars, gear 5, and the start of the engineer chat." />
+    <figcaption>The same dashboard at phone width.</figcaption>
+  </figure>
+
+  <nav class="pager" aria-label="Previous and next page">
+    <a class="prev" href="./"><span class="d">Previous</span><span class="t">Overview</span></a>
+    <a class="next" href="ai.html"><span class="d">Next</span><span class="t">Choosing your AI</span></a>
+  </nav>
+  </article>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>airaceGP Docs &middot; your keys, your models, your data</span>
+    <span><a href="https://airacegp.com/">airacegp.com</a> &middot; <a href="https://www.youtube.com/@pmech-yt">YouTube</a> &middot; <a href="https://github.com/nothing-gpu">GitHub</a></span>
+    <p class="legal">airaceGP is an unofficial fan-made tool. It is not affiliated with, endorsed by, or in partnership with
+    Kunos Simulazioni, 505 Games, Electronic Arts Inc., Codemasters, Formula One Licensing BV or the FIA.
+    F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP and related marks are trademarks of Formula One Licensing BV.
+    Assetto Corsa Competizione is a product of Kunos Simulazioni; F1 25 is a product of Electronic Arts Inc. and Codemasters.
+    Game names are used only to identify compatibility.</p>
+  </div>
+</footer>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>

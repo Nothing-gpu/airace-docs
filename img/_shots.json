@@ -1,0 +1,140 @@
+{
+ "app": "airaceGP web/index.html via run._make_handler",
+ "fake_key": "demo-placeholder-not-a-key",
+ "snapshot": {
+  "last_lap_ms": 157165,
+  "sector": 0,
+  "position": 10,
+  "current_lap": 15,
+  "time_left_s": 1032.267,
+  "tyres": [
+   30.883872985839844,
+   30.29990577697754,
+   29.47903060913086,
+   29.15589141845703
+  ],
+  "tyre_pressures": {
+   "fl": 29.828529357910156,
+   "fr": 29.797508239746094,
+   "rl": 29.56339454650879,
+   "rr": 29.507333755493164
+  },
+  "pressure_window": {
+   "fl": "in window",
+   "fr": "in window",
+   "rl": "in window",
+   "rr": "in window"
+  },
+  "compound": "wet",
+  "fuel": {
+   "estimatedLaps": 4.800022602081299,
+   "perLap": 3.3105173110961914,
+   "lapsToFlag": 6.6,
+   "shortBy": 1.8,
+   "onThisTank": "short"
+  },
+  "damage": {
+   "body": [
+    3.5,
+    1.5,
+    0.0,
+    5.9,
+    10.9
+   ],
+   "suspension": {
+    "fl": 0.0,
+    "fr": 0.0,
+    "rl": 0.0,
+    "rr": 0.0
+   },
+   "any": true,
+   "lastImpact": {
+    "amount": 5.9,
+    "panel": "right",
+    "secondsAgo": 0.0
+   }
+  },
+  "gaps": {
+   "aheadS": 0,
+   "behindS": 0
+  },
+  "flags": {
+   "current": "no flag",
+   "yellowSector1": false,
+   "yellowSector2": false,
+   "yellowSector3": false,
+   "red": false
+  },
+  "analysis": {
+   "headline": {
+    "topic": "penalty",
+    "severity": 3,
+    "say": "Serve the penalty: thirty second stop-and-go, pit speeding.",
+    "fresh": true,
+    "model_say": "Serve the penalty: {penalties}."
+   },
+   "also": [
+    {
+     "topic": "fuel",
+     "severity": 3,
+     "say": "Fuel short by 1.8 laps to the flag.",
+     "fresh": true,
+     "model_say": "Fuel short by {fuel_short_by} laps to the flag."
+    },
+    {
+     "topic": "damage",
+     "severity": 3,
+     "say": "Contact right; check the handling.",
+     "fresh": true
+    }
+   ],
+   "standing": [],
+   "quiet": false
+  },
+  "speed": 212,
+  "throttle": 0.86,
+  "brake": 0.0,
+  "steer": 0.04,
+  "gear": 5
+ },
+ "chat": [
+  {
+   "role": "engineer",
+   "text": "Penalty. Thirty second stop-and-go for pit speeding. Serve it.",
+   "time": "14:02:11"
+  },
+  {
+   "role": "driver",
+   "text": "Copy. How is the fuel?",
+   "time": "14:02:40"
+  },
+  {
+   "role": "engineer",
+   "text": "Short by 1.8 laps to the flag on this tank.",
+   "time": "14:02:42"
+  }
+ ],
+ "chains": {
+  "tick_chain": [
+   {
+    "provider": "ollama_cloud",
+    "model": "gpt-oss:120b"
+   },
+   {
+    "provider": "groq",
+    "model": "openai/gpt-oss-120b"
+   }
+  ],
+  "question_chain": [
+   {
+    "provider": "ollama_cloud",
+    "model": "gemma4:31b"
+   },
+   {
+    "provider": "ollama_cloud",
+    "model": "gpt-oss:120b"
+   }
+  ],
+  "use_fallback": true
+ }
+}
