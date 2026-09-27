@@ -18,6 +18,8 @@ Serves this folder the way GitHub Pages does (extensionless URLs resolve to
   6  no console errors, page errors or failed requests
   7  no string that looks like an API key anywhere in this repo's files
      (pages, scripts, images, the screenshot source data)
+  8  no eyebrow: no short label stacked above text 1.5x its size (callouts
+     and code blocks excepted), matching the marketing site
 
     python3 _verify_docs.py            # app at ../airarce-ui/airacee/airacee
     AIRACE_APP=/path/to/airacee/airacee python3 _verify_docs.py
@@ -139,6 +141,34 @@ CLIP = r"""() => {
   return [...new Set(out)].slice(0, 12);
 }"""
 
+# 8: no eyebrow labels. The owner removed "smaller text above big text"
+# from the marketing site; the docs match. An eyebrow is a short piece of
+# text stacked directly above a sibling set at least 1.5x its size. Labels
+# inside callouts and code blocks are content, not eyebrows, and stay.
+EYEBROW = r"""() => {
+  const out = [];
+  const main = document.querySelector('main') || document.body;
+  const shown = el => { const cs = getComputedStyle(el); const r = el.getBoundingClientRect();
+    return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0; };
+  const biggest = el => Math.max(parseFloat(getComputedStyle(el).fontSize),
+    ...[...el.querySelectorAll('*')].map(c => parseFloat(getComputedStyle(c).fontSize)));
+  for (const el of main.querySelectorAll('*')) {
+    if (el.closest('.callout, .code, table, figure')) continue;
+    // a label is text, not a box of images or paragraphs (a lone figure's
+    // caption is short too, and is not an eyebrow)
+    if (el.querySelector('img, figure, p, div, ul, ol, table')) continue;
+    const next = el.nextElementSibling;
+    if (!next || !shown(el) || !shown(next)) continue;
+    const t = (el.innerText || '').trim();
+    if (!t || t.length > 40) continue;
+    const a = el.getBoundingClientRect(), b = next.getBoundingClientRect();
+    const stacked = a.bottom <= b.top + 2 && a.left < b.right && b.left < a.right;
+    if (stacked && biggest(next) >= 1.5 * parseFloat(getComputedStyle(el).fontSize))
+      out.push(JSON.stringify(t) + ' above ' + next.tagName.toLowerCase() + ' ' + JSON.stringify((next.innerText || '').trim().slice(0, 30)));
+  }
+  return out;
+}"""
+
 LINKS = r"""() => [...document.querySelectorAll('a[href]')].map(a => a.getAttribute('href'))"""
 IDS = r"""() => [...document.querySelectorAll('[id]')].map(e => e.id)"""
 IMGS = r"""() => [...document.images].map(i => ({src: i.currentSrc || i.src,
@@ -242,7 +272,7 @@ def main():
               all(s in page.inner_text('main') for s in ('Ollama Cloud', 'gemma4:31b')), True)
 
         # 3 + 4 + 5 per page
-        ids_of, broken, bad_imgs, clipped = {}, [], [], []
+        ids_of, broken, bad_imgs, clipped, eyebrows = {}, [], [], [], []
         for name in names:
             page.goto(f'{base}/{name}')
             page.wait_for_load_state('networkidle')
@@ -270,6 +300,8 @@ def main():
             for img in page.evaluate(IMGS):
                 if not img['ok'] or not img['alt']:
                     bad_imgs.append(f"{name}: {img['src'].split('/')[-1]} ok={img['ok']} alt={bool(img['alt'])}")
+            for e in page.evaluate(EYEBROW):
+                eyebrows.append(f'{name}: {e}')
             for w in WIDTHS:
                 page.set_viewport_size({'width': w, 'height': 900})
                 page.wait_for_timeout(120)
@@ -288,6 +320,7 @@ def main():
               len(list((ROOT / 'img').glob('*.*'))) >= 5 if (ROOT / 'img').exists() else False, True)
         check('5 no clipping or overflow at ' + '/'.join(map(str, WIDTHS)), clipped[:15], [])
         check('6 no console errors', console[:10], [])
+        check('8 no eyebrow label stacked above bigger text', eyebrows[:15], [])
         browser.close()
     srv.shutdown()
 
