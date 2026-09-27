@@ -74,7 +74,6 @@
   <main id="main">
   <article class="doc">
 
-  <p class="kicker">Your AI</p>
   <h1>Choosing your AI</h1>
   <p class="lead">The app computes the analysis; the model you choose turns it into words. You bring the
   key, and you decide which providers are asked and in what order.</p>
@@ -134,10 +133,9 @@
     <li>Nothing outside these lists is ever called.</li>
   </ul>
   <figure>
-    <img src="img/settings-model-chain.webp" width="1228" height="649" loading="lazy"
-      alt="Settings, AI, Model chain editor. Unprompted calls: 1 Ollama Cloud gpt-oss:120b, 2 Groq openai/gpt-oss-120b marked no key and skipped. Your questions: 1 and 2 Ollama Cloud. Each row has up, down and remove buttons, with Add provider and Reset to default below, and the Use fallbacks switch on." />
-    <figcaption>The chain editor. Here Groq has no key, so it is skipped until one is added. The
-    questions list holds <code>gemma4:31b</code> and then <code>gpt-oss:120b</code>.</figcaption>
+    <img src="img/settings-model-chain.webp" width="1400" height="711" loading="lazy"
+      alt="Settings, AI, Model chain editor. Unprompted calls: 1 Ollama Cloud gpt-oss:120b, 2 Groq openai/gpt-oss-120b marked no key and skipped. Your questions: 1 Ollama Cloud gemma4:31b, 2 Ollama Cloud gpt-oss:120b. Each row has up, down and remove buttons, with Add provider and Reset to default below each list, and the Use fallbacks switch on." />
+    <figcaption>The chain editor. Here Groq has no key, so it is skipped until one is added.</figcaption>
   </figure>
   <div class="callout note">
     <p class="callout-title">When the questions list applies</p>
@@ -190,8 +188,8 @@
   </ul>
 
   <nav class="pager" aria-label="Previous and next page">
-    <a class="prev" href="setup.html"><span class="d">Previous</span><span class="t">Basic setup</span></a>
-    <a class="next" href="errors.html"><span class="d">Next</span><span class="t">Error codes</span></a>
+    <a class="prev" href="setup.html" aria-label="Previous: Basic setup"><span class="t">&larr; Basic setup</span></a>
+    <a class="next" href="errors.html" aria-label="Next: Error codes"><span class="t">Error codes &rarr;</span></a>
   </nav>
   </article>
   </main>

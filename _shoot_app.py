@@ -103,6 +103,29 @@ def save(png: bytes, name: str, width: int | None = None):
     done.append(f'{name}.webp {im.width}x{im.height}')
 
 
+FONT_FILES = {('Barlow', 400): 'barlow-400', ('Barlow', 500): 'barlow-500', ('Barlow', 600): 'barlow-600',
+              ('Barlow Condensed', 500): 'barlow-condensed-500', ('Barlow Condensed', 600): 'barlow-condensed-600',
+              ('Barlow Condensed', 700): 'barlow-condensed-700', ('Barlow Condensed', 800): 'barlow-condensed-800'}
+
+
+def local_fonts(ctx):
+    """Serve the app's Google Fonts request from this repo's fonts/ (the
+    same OFL families): shots must not depend on a flaky network, or a
+    fallback font lands in the docs."""
+    fonts = ROOT / 'fonts'
+    if not fonts.exists():
+        return
+    css = ''.join(f'@font-face{{font-family:"{fam}";font-weight:{w};font-style:normal;'
+                  f'src:url(https://fonts.local/{f}.woff2) format("woff2")}}' for (fam, w), f in FONT_FILES.items())
+    css += ('@font-face{font-family:"JetBrains Mono";font-weight:400 800;font-style:normal;'
+            'src:url(https://fonts.local/jetbrains-mono.woff2) format("woff2")}')
+    ctx.route('https://fonts.googleapis.com/**',
+              lambda r: r.fulfill(status=200, content_type='text/css', body=css))
+    ctx.route('https://fonts.local/**', lambda r: r.fulfill(
+        status=200, content_type='font/woff2', headers={'Access-Control-Allow-Origin': '*'},
+        body=(fonts / r.request.url.rsplit('/', 1)[1]).read_bytes()))
+
+
 def shoot(label, fn):
     try:
         fn()
@@ -157,6 +180,7 @@ def main():
         browser = p.chromium.launch(**kw)
         ctx = browser.new_context(viewport={'width': 1440, 'height': 900}, device_scale_factor=1.25,
                                   ignore_https_errors=True, reduced_motion='reduce')
+        local_fonts(ctx)
         page = ctx.new_page()
         page.set_default_timeout(4000)
         page.set_default_navigation_timeout(30000)
@@ -196,11 +220,9 @@ def main():
             c.locator('input').fill(FAKE_KEY)
             page.locator('#onboard-fallback-next').click()
             page.evaluate("document.activeElement && document.activeElement.blur()")
+            # one shot: the reskinned card shows the keys, the fallback
+            # question and the chain preview without scrolling
             ob('onboarding-providers')
-            # the fallback question and the chain it will save sit below
-            page.evaluate("""() => { const b = document.querySelector('#onboard-overlay .onboard-body');
-                if (b) b.scrollTop = b.scrollHeight; }""")
-            ob('onboarding-fallback')
         shoot('onboarding providers + fallback', providers)
 
         def speech():
@@ -217,12 +239,7 @@ def main():
             page.click('.nav-btn[data-page="dashboard"]')
             page.wait_for_timeout(1500)
             guard(page, 'dashboard')
-            # tall enough for the analysis strip, without full_page (which
-            # would paint the fixed status bar over the middle of it)
-            page.set_viewport_size({'width': 1440, 'height': 1110})
-            page.wait_for_timeout(600)
             save(page.screenshot(), 'dashboard', 1600)
-            page.set_viewport_size({'width': 1440, 'height': 900})
         shoot('dashboard', dashboard)
 
         def model_chain():
@@ -238,11 +255,25 @@ def main():
         shoot('settings model chain', model_chain)
 
         def telemetry_pane():
+            # as an F1 driver sees it: the UDP format row only shows for F1
+            set_cfg(game='f1_25')
+            page.reload()
+            page.wait_for_timeout(1200)
+            page.click('.nav-btn[data-page="settings"]')
             page.click('.side-item[data-section="telemetry"]')
             page.wait_for_timeout(500)
             guard(page, 'telemetry settings')
-            save(page.locator('#pane-telemetry').screenshot(), 'settings-telemetry', 1400)
+            # clip to the rows: the pane itself runs on to the window bottom
+            box = page.evaluate("""() => { const p = document.querySelector('#pane-telemetry');
+                const r = p.getBoundingClientRect(); let bottom = r.top;
+                p.querySelectorAll('.pane-head, .setting-row').forEach(e => {
+                    if (e.offsetParent) bottom = Math.max(bottom, e.getBoundingClientRect().bottom); });
+                return {x: r.left, y: r.top, width: r.width, height: bottom - r.top + 12}; }""")
+            save(page.screenshot(clip=box), 'settings-telemetry', 1400)
         shoot('settings telemetry', telemetry_pane)
+        set_cfg(game='acc')
+        page.reload()
+        page.wait_for_timeout(1200)
 
         def notice():
             import errors as app_errors
@@ -269,6 +300,7 @@ def main():
         def phone():
             m = browser.new_context(viewport={'width': 390, 'height': 844}, device_scale_factor=2,
                                     ignore_https_errors=True, reduced_motion='reduce')
+            local_fonts(m)
             pg = m.new_page()
             pg.set_default_navigation_timeout(30000)
             pg.goto(base + '/')

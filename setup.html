@@ -77,7 +77,6 @@
   <main id="main">
   <article class="doc">
 
-  <p class="kicker">Getting started</p>
   <h1>Basic setup</h1>
   <p class="lead">Install the app, answer six questions, connect your game and drive. This page walks
   through each step.</p>
@@ -122,7 +121,7 @@ python desktop.py</code></pre></div>
     <li><strong>Which game?</strong> Assetto Corsa Competizione, F1 25 with the 2026 Season Pack format,
     or F1 25 with the classic 2025 format. Older F1 games are listed as unverified.</li>
     <li><strong>Connect a provider.</strong> Paste a key for at least one provider. Ollama Cloud and Groq
-    are shown first as the recommended combo; <strong>List more providers</strong> shows the rest.
+    are shown first, recommended to start; <strong>List more providers</strong> shows the rest.
     Then answer <strong>If your first provider fails</strong>: <em>Try the next one</em> or <em>Stay
     quiet</em>. The wizard shows the order it will save before you continue.</li>
     <li><strong>How should they talk?</strong> Talkativeness (only when it matters, balanced, keep me
@@ -134,12 +133,12 @@ python desktop.py</code></pre></div>
   </ol>
   <div class="shots">
     <figure>
-      <img src="img/onboarding-language.webp" width="800" height="480" loading="lazy"
+      <img src="img/onboarding-language.webp" width="800" height="463" loading="lazy"
         alt="Onboarding, Let's pick your language: a grid of the nine languages, English, Español, Italiano, Français, Deutsch, Português, Čeština, Polski and 日本語." />
       <figcaption>Step 1: the app language. Step 2 asks the same for the engineer.</figcaption>
     </figure>
     <figure>
-      <img src="img/onboarding-game.webp" width="800" height="910" loading="lazy"
+      <img src="img/onboarding-game.webp" width="800" height="898" loading="lazy"
         alt="Onboarding step 3 of 5, Which game: Assetto Corsa Competizione selected and marked supported, F1 25 / 26 and F1 25 2025 supported, F1 24, F1 23, F1 22 and F1 2021 marked unverified." />
       <figcaption>Step 3: the game. ACC, and F1 25 in either telemetry format.</figcaption>
     </figure>
@@ -147,20 +146,14 @@ python desktop.py</code></pre></div>
   <div class="shots">
     <figure>
       <img src="img/onboarding-providers.webp" width="800" height="1035" loading="lazy"
-        alt="Onboarding step 4 of 5, Connect a provider: the Recommended combo box holds Ollama Cloud, with a key pasted and masked, and Groq; OpenRouter and Anthropic below, a List more providers button, and the If your first provider fails question." />
-      <figcaption>Step 4: paste a key. It is masked on screen and saved only to your local
-      <code>.env</code>.</figcaption>
-    </figure>
-    <figure>
-      <img src="img/onboarding-fallback.webp" width="800" height="1035" loading="lazy"
-        alt="The same step scrolled down: If your first provider fails, with Try the next one selected, and the preview of what will be saved. Unprompted calls: Ollama Cloud gpt-oss:120b. Your questions: Ollama Cloud gemma4:31b, then Ollama Cloud gpt-oss:120b." />
-      <figcaption>The fallback question and the model chain it will save, for an Ollama Cloud key
-      alone.</figcaption>
+        alt="Onboarding step 4 of 5, Connect a provider: Ollama Cloud and Groq first, recommended to start, both with a free tier; an Ollama Cloud key pasted and masked; OpenRouter, Anthropic and List more providers below; If your first provider fails with Try the next one selected; and the chain it will save. Unprompted calls: Ollama Cloud gpt-oss:120b. Your questions: Ollama Cloud gemma4:31b, then Ollama Cloud gpt-oss:120b." />
+      <figcaption>Step 4 with an Ollama Cloud key. The key is masked on screen and saved only to your local
+      <code>.env</code>; below it, the fallback question and the chain the wizard will save.</figcaption>
     </figure>
   </div>
   <div class="shots">
     <figure>
-      <img src="img/onboarding-speech.webp" width="800" height="498" loading="lazy"
+      <img src="img/onboarding-speech.webp" width="800" height="478" loading="lazy"
         alt="Onboarding step 5 of 5, How should they talk: Talkativeness with Only when it matters, Balanced and Keep me talking; How often they check in with Now and then, Regularly and Frequently." />
       <figcaption>Step 5: how much the engineer talks.</figcaption>
     </figure>
@@ -220,18 +213,14 @@ python desktop.py</code></pre></div>
     <li>In the app, set <strong>Settings &rarr; Telemetry &rarr; UDP packet format</strong> to the same
     format as the game: <em>F1 25 (2026 Season Pack)</em> or <em>F1 25 (2025 classic)</em>. This applies
     without a restart.</li>
-    <li>Drive. The status bar at the bottom of the dashboard reads <strong>Telemetry &middot; Live</strong>
+    <li>Drive. The status bar at the bottom of the app reads <strong>Telemetry &middot; Live</strong>
     while packets arrive.</li>
   </ol>
-  <div class="callout warn">
-    <p class="callout-title">Port 20778</p>
-    <p>The app's listener uses UDP port <code>20778</code>, not the game's default 20777. The Telemetry
-    page in Settings may still show 20777; the listener uses 20778.</p>
-  </div>
   <figure>
-    <img src="img/settings-telemetry.webp" width="1230" height="1111" loading="lazy"
-      alt="Settings, Telemetry pane: the Sim dropdown set to Assetto Corsa Competizione, the UDP packet format dropdown for F1 games set to F1 25 (2026 Season Pack), and the Record sessions switch." />
-    <figcaption>Settings &rarr; Telemetry: the game, and the UDP packet format for F1.</figcaption>
+    <img src="img/settings-telemetry.webp" width="1400" height="511" loading="lazy"
+      alt="Settings, Telemetry pane: UDP port 20778, the Sim dropdown set to F1 25 / 26, the UDP packet format dropdown set to F1 25 (2026 Season Pack), and the Record sessions switch." />
+    <figcaption>Settings &rarr; Telemetry: the port the app listens on, the game, and the UDP packet format
+    for F1.</figcaption>
   </figure>
 
   <h2 id="voice">Talking to the engineer <a class="h-anchor" href="#voice" aria-label="Link to this section">#</a></h2>
@@ -251,7 +240,8 @@ python desktop.py</code></pre></div>
     Groq call fails, it uses Local.</li>
     <li><strong>Devices.</strong> <strong>Settings &rarr; Audio</strong> picks the microphone, the speaker
     and the voice volume, with a Test button.</li>
-    <li><strong>Mute and pause.</strong> <em>Mute Mic</em> and <em>Pause</em> are on the Home page.</li>
+    <li><strong>Mute and pause.</strong> <em>Mute Mic</em> is on the Home page and in the radio panel on
+    the Live page; <em>Pause</em> is on the Home page.</li>
   </ul>
 
   <h2 id="languages">Languages <a class="h-anchor" href="#languages" aria-label="Link to this section">#</a></h2>
@@ -267,13 +257,13 @@ python desktop.py</code></pre></div>
   <a href="errors.html#AIR-503">AIR-503</a>.</p>
   <figure class="phone">
     <img src="img/dashboard-phone.webp" width="780" height="1688" loading="lazy"
-      alt="The dashboard at phone width: speed 212 km/h, last lap 2:37.165, throttle, brake and steering bars, gear 5, and the start of the engineer chat." />
-    <figcaption>The same dashboard at phone width.</figcaption>
+      alt="The Live page at phone width: position P10, fuel 4.8 laps and marked short, speed 212 km/h, gear 5, last lap 2:37.165, sector 1, and throttle, brake and steering bars." />
+    <figcaption>The same Live page at phone width.</figcaption>
   </figure>
 
   <nav class="pager" aria-label="Previous and next page">
-    <a class="prev" href="./"><span class="d">Previous</span><span class="t">Overview</span></a>
-    <a class="next" href="ai.html"><span class="d">Next</span><span class="t">Choosing your AI</span></a>
+    <a class="prev" href="./" aria-label="Previous: Overview"><span class="t">&larr; Overview</span></a>
+    <a class="next" href="ai.html" aria-label="Next: Choosing your AI"><span class="t">Choosing your AI &rarr;</span></a>
   </nav>
   </article>
   </main>

@@ -75,16 +75,15 @@
   <main id="main">
   <article class="doc">
 
-  <p class="kicker">Help</p>
   <h1>Troubleshooting</h1>
   <p class="lead">Most problems come with an AIR code on screen. Look it up in
   <a href="errors.html">Error codes</a> first; the answers below cover the rest.</p>
 
   <figure class="narrow">
-    <img src="img/health-notice.webp" width="523" height="150" loading="lazy"
-      alt="A dashboard notice from the AI engine: Ollama Cloud answered 429 (rate limit). Trying the next provider in your chain." />
-    <figcaption>A notice on the dashboard. This one is a rate limit,
-    <a href="errors.html#AIR-202">AIR-202</a>.</figcaption>
+    <img src="img/health-notice.webp" width="523" height="258" loading="lazy"
+      alt="A notice from the AI engine: Ollama Cloud answered 429 (rate limit). Trying the next provider in your chain. Below it the fix: wait, or add another provider to your model chain with Use fallbacks on. At the bottom a link reading AIR-202, docs." />
+    <figcaption>A notice in the app. Each one shows its AIR code and what to do, and the code links to its
+    entry on this site; this one is a rate limit, <a href="errors.html#AIR-202">AIR-202</a>.</figcaption>
   </figure>
 
   <h2 id="silent">The engineer is silent <a class="h-anchor" href="#silent" aria-label="Link to this section">#</a></h2>
@@ -124,7 +123,7 @@
   <h2 id="no-data">No telemetry <a class="h-anchor" href="#no-data" aria-label="Link to this section">#</a></h2>
   <div class="faq">
     <details>
-      <summary>ACC: the dashboard stays empty</summary>
+      <summary>ACC: the Live page stays empty</summary>
       <div class="a"><ul>
         <li>The game in <strong>Settings &rarr; Telemetry &rarr; Sim</strong> is Assetto Corsa Competizione, and the app was restarted after changing it.</li>
         <li>You are on track. ACC publishes nothing in the menus.</li>
@@ -228,7 +227,7 @@
   only, never a key). A code quoted exactly is the fastest way to a fix.</p>
 
   <nav class="pager" aria-label="Previous and next page">
-    <a class="prev" href="errors.html"><span class="d">Previous</span><span class="t">Error codes</span></a>
+    <a class="prev" href="errors.html" aria-label="Previous: Error codes"><span class="t">&larr; Error codes</span></a>
   </nav>
   </article>
   </main>
