@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Customizing the engineer · airaceGP Docs</title>
+<meta name="description" content="Every setting that changes how often, how much and in what voice the engineer talks, and which model it asks." />
+<link rel="canonical" href="https://docs.airacegp.com/customizing" />
+<meta name="theme-color" content="#000000" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="airaceGP Docs" />
+<meta property="og:title" content="Customizing the engineer · airaceGP Docs" />
+<meta property="og:description" content="Every setting that changes how often, how much and in what voice the engineer talks, and which model it asks." />
+<meta property="og:url" content="https://docs.airacegp.com/customizing" />
+<meta property="og:image" content="https://docs.airacegp.com/og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png" />
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/barlow-condensed-800.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/docs.css" />
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="./" aria-label="airaceGP Docs, overview">
+      <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+        <circle cx="256" cy="256" r="244" fill="#000" stroke="#fff" stroke-width="14"/>
+        <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M146,410 L420,410 C452,410 458,380 452,345 C448,300 446,240 419,205 C400,150 320,96 228,98 C150,100 78,160 70,235 C64,300 90,410 146,410 Z"/>
+          <path d="M419,205 C360,200 250,200 224,250 C214,275 240,300 300,305 L452,345"/>
+        </g>
+      </svg>
+      <span class="brand-name">airace<span>GP</span></span>
+      <span class="brand-seg">Docs</span>
+    </a>
+    <nav class="top-links" aria-label="Site">
+      <a href="https://airacegp.com/">airacegp.com</a>
+      <a href="https://www.youtube.com/@pmech-yt">YouTube</a>
+      <a href="https://github.com/nothing-gpu">GitHub</a>
+    </nav>
+    <button class="menu-btn" id="nav-toggle" type="button" aria-controls="side" aria-expanded="false">Menu</button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side">
+    <nav aria-label="Documentation">
+      <p class="side-label">Documentation</p>
+      <ol>
+        <li><a href="./">Overview</a></li>
+        <li><a href="setup.html">Basic setup</a></li>
+        <li><a href="ai.html">Choosing your AI</a></li>
+        <li><a href="customizing.html" aria-current="page">Customizing</a>
+          <ol class="sub">
+            <li><a href="#talking">How much it talks</a></li>
+            <li><a href="#topics">What it talks about</a></li>
+            <li><a href="#voice">Voice and language</a></li>
+            <li><a href="#brain">The AI behind it</a></li>
+            <li><a href="#data">Data and network</a></li>
+            <li><a href="#dev">Developer page</a></li>
+          </ol>
+        </li>
+        <li><a href="errors.html">Error codes</a></li>
+        <li><a href="troubleshooting.html">Troubleshooting</a></li>
+      </ol>
+    </nav>
+    <div class="side-foot">
+      <a href="accessibility.html">Accessibility</a>
+      <a href="https://airacegp.com/">&larr; Back to airacegp.com</a>
+    </div>
+  </aside>
+
+  <main id="main">
+  <article class="doc">
+
+    <h1>Customizing the engineer</h1>
+  <p class="lead">Almost everything about how the engineer behaves is a setting. Each one saves the moment you
+  change it and applies from the next call, with no restart. Open <strong>Settings</strong> and look in the groups
+  below. Games differ: items marked ACC only appear for Assetto Corsa Competizione.</p>
+  <h2 id="talking">How much it talks <a class="h-anchor" href="#talking" aria-label="Link to section: How much it talks">#</a></h2>
+  <ul>
+    <li><strong>Chattiness</strong> (0 to 100): how readily it volunteers an unprompted call.</li>
+    <li><strong>Verbosity</strong>: how much detail each call carries.</li>
+    <li><strong>Call interval</strong>: how often the engineer considers speaking on its own.</li>
+    <li><strong>Allow the engineer to stay quiet</strong>: lets it say nothing when there is nothing worth saying.</li>
+    <li><strong>Space between calls</strong> (0 to 120 s): a routine call that would land sooner than this after the last one is dropped.
+    Urgent calls and your questions always go out. Off at 0.</li>
+    <li><strong>Longest routine call</strong> (5 to 60 words): shortens a volunteered call, at a whole sentence where it can.
+    Your questions are never shortened. Off at 0.</li>
+    <li><strong>Hold calls through corners</strong> and <strong>Longest hold</strong> (ACC only): waits for the corner exit before speaking,
+    never past the longest hold, and never for urgent calls.</li>
+  </ul>
+  <h2 id="topics">What it talks about <a class="h-anchor" href="#topics" aria-label="Link to section: What it talks about">#</a></h2>
+  <ul>
+    <li><strong>Fuel updates</strong> on or off, and the fuel plan to the flag.</li>
+    <li><strong>Say what's on the dash</strong>: read out dash warnings.</li>
+    <li><strong>Warn about the mandatory pit stop</strong> and <strong>First reminder</strong>: when the first reminder comes.</li>
+    <li><strong>Sector coaching</strong> (beta): names the sector where you lose the most time against your own best.
+    It stays quiet on invalid or incident laps.</li>
+    <li><strong>Spin detection</strong>: handled in the app, with an option to hand it to the AI instead.</li>
+    <li><strong>Custom instructions</strong>: a few lines of your own guidance, applied on top of the built-in prompt.</li>
+  </ul>
+  <h2 id="voice">Voice and language <a class="h-anchor" href="#voice" aria-label="Link to section: Voice and language">#</a></h2>
+  <ul>
+    <li><strong>Engineer language</strong>: nine languages, translated on your PC with no cloud service.
+    A language pack downloads once, the first time you pick it.</li>
+    <li><strong>Voices</strong>: choose an installed voice or download another from Settings &rarr; Voice, and set the <strong>volume</strong>.</li>
+    <li><strong>Microphone and speech recognition</strong>: pick the input, the speech model size, and whether the mic is on.</li>
+    <li><strong>Interrupt sensitivity</strong>: how loud you must be to cut the engineer off.</li>
+    <li><strong>Wake word</strong>: optionally start a question by name instead of by voice activity.</li>
+    <li><strong>App language</strong> is separate from the engineer's language.</li>
+  </ul>
+  <h2 id="brain">The AI behind it <a class="h-anchor" href="#brain" aria-label="Link to section: The AI behind it">#</a></h2>
+  <ul>
+    <li><strong>Model chain</strong>: one chain for unprompted calls and one for your questions, each an ordered list of
+    providers and models. See <a href="ai.html#model-chain">The model chain</a>.</li>
+    <li><strong>Use fallbacks</strong>: if the first entry fails, ask the next. A failure shows its
+    <a href="errors.html">error code</a> and the fix.</li>
+    <li><strong>Smart routing</strong>: send simple questions to a small, fast model.</li>
+    <li><strong>Custom endpoint</strong>: any OpenAI-compatible service. Its terms and data handling are between you and its operator.</li>
+    <li><strong>Prompt override</strong>: replace the built-in system prompt entirely. For advanced use.</li>
+  </ul>
+  <h2 id="data">Data and network <a class="h-anchor" href="#data" aria-label="Link to section: Data and network">#</a></h2>
+  <ul>
+    <li><strong>Record sessions</strong>: keep a recording of each session for the Analysis page. Recordings stay on your PC.</li>
+    <li><strong>ACC broadcasting</strong>: read rivals and gaps from ACC's Broadcasting API (read-only).</li>
+    <li><strong>UDP format and port</strong> (F1 25): must match the game's telemetry settings.</li>
+    <li><strong>LAN dashboard</strong>: show the dashboard to another device on your network. Keys and restart stay on the race PC.</li>
+  </ul>
+  <h2 id="dev">Developer page <a class="h-anchor" href="#dev" aria-label="Link to section: Developer page">#</a></h2>
+  <p>Turn on <strong>Developer mode</strong> (Settings &rarr; About) to add a <strong>Dev</strong> page beside Settings. It shows what each
+  detector sees, what the AI is given, and the engine's recent events, and has buttons to force a tick, play a radio check and
+  reset the app. <strong>Reset app</strong> returns settings and the engineer's memory to a first run and keeps your recorded sessions;
+  API keys are removed only if you tick the box.</p>
+
+  <nav class="pager" aria-label="Previous and next page">
+    <a class="prev" href="ai.html" aria-label="Previous: Choosing your AI"><span class="t">&larr; Choosing your AI</span></a>
+    <a class="next" href="errors.html" aria-label="Next: Error codes"><span class="t">Error codes &rarr;</span></a>
+  </nav>
+  </article>
+  </main>
+</div>
+
+<footer class="foot">
+  <div class="foot-in">
+    <span>airaceGP Docs &middot; your keys, your models, your data</span>
+    <span><a href="accessibility.html">Accessibility</a> &middot; <a href="https://airacegp.com/">airacegp.com</a> &middot; <a href="https://www.youtube.com/@pmech-yt">YouTube</a> &middot; <a href="https://github.com/nothing-gpu">GitHub</a></span>
+    <p class="legal">airaceGP is an unofficial fan-made tool. It is not affiliated with, endorsed by, or in partnership with
+    Kunos Simulazioni, 505 Games, Electronic Arts Inc., Codemasters, Formula One Licensing BV or the FIA.
+    F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP and related marks are trademarks of Formula One Licensing BV.
+    Assetto Corsa Competizione is a product of Kunos Simulazioni; F1 25 is a product of Electronic Arts Inc. and Codemasters.
+    Game names are used only to identify compatibility.</p>
+  </div>
+</footer>
+<script src="assets/docs.js" defer></script>
+</body>
+</html>
