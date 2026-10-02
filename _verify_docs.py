@@ -206,7 +206,7 @@ def main():
 
     names = pages()
     check('0 the site has its pages', [n for n in ('index.html', 'setup.html', 'ai.html',
-          'errors.html', 'troubleshooting.html', '404.html') if n not in names], [])
+          'errors.html', 'troubleshooting.html', 'customizing.html', '404.html') if n not in names], [])
 
     errors_reg = load_errors()
     srv = ThreadingHTTPServer(('127.0.0.1', 0), partial(PagesHandler, directory=str(ROOT)))
