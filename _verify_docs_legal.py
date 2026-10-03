@@ -54,6 +54,7 @@ check('2c email contact', 'mailto:contact@airacegp.com' in a)
 c = open(os.path.join(HERE, 'customizing.html'), encoding='utf-8').read()
 check('3a push to talk documented', all(k in c for k in ('Push to talk', 'wheel', 'Hold', 'Tap', 'Bind button')))
 check('3b male English voice documented', re.search(r'male', c, re.I) is not None and 'Cori' in c)
+check('3d quiet button, drink reminder and forward UDP documented', all(k in c for k in ('Quiet button', 'Drink reminder', 'Forward UDP', 'SimHub')))
 check('3c home page links llms.txt', 'https://airacegp.com/llms.txt' in open(os.path.join(HERE, 'index.html'), encoding='utf-8').read())
 
 print(f'\n{"ALL PASS" if not fails else f"{len(fails)} FAILED"}')
