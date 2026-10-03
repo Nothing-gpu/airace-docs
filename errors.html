@@ -85,7 +85,7 @@
   <p class="lead">Every problem the app reports carries a code like <code>AIR-201</code>. Each notice in
   the app shows its code and what to do, and the code links straight to its entry on this page. API
   error responses carry the same codes.</p>
-  <p>There are <span id="code-count">46</span> codes. Each has its own address, for example
+  <p>There are <span id="code-count">48</span> codes. Each has its own address, for example
   <a href="errors.html#AIR-208"><code>docs.airacegp.com/errors#AIR-208</code></a>. Codes are permanent: a
   number is never reused for a different problem. Severity is <span class="lvl error">Error</span> when
   something stopped working, <span class="lvl warn">Warning</span> when the app carried on, and
@@ -98,8 +98,8 @@
     <li><a href="#area-settings">Settings <span class="r">AIR-101&ndash;106</span></a></li>
     <li><a href="#area-ai-providers">AI providers <span class="r">AIR-201&ndash;214</span></a></li>
     <li><a href="#area-local-ollama">Local Ollama <span class="r">AIR-251&ndash;255</span></a></li>
-    <li><a href="#area-telemetry">Telemetry <span class="r">AIR-301&ndash;307</span></a></li>
-    <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;407</span></a></li>
+    <li><a href="#area-telemetry">Telemetry <span class="r">AIR-301&ndash;308</span></a></li>
+    <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;408</span></a></li>
     <li><a href="#area-web-server">Web server <span class="r">AIR-501&ndash;506</span></a></li>
     <li><a href="#area-app">App <span class="r">AIR-901</span></a></li>
   </ul>
@@ -136,6 +136,7 @@
     <a href="#AIR-305">AIR-305</a>
     <a href="#AIR-306">AIR-306</a>
     <a href="#AIR-307">AIR-307</a>
+    <a href="#AIR-308">AIR-308</a>
     <a href="#AIR-401">AIR-401</a>
     <a href="#AIR-402">AIR-402</a>
     <a href="#AIR-403">AIR-403</a>
@@ -143,6 +144,7 @@
     <a href="#AIR-405">AIR-405</a>
     <a href="#AIR-406">AIR-406</a>
     <a href="#AIR-407">AIR-407</a>
+    <a href="#AIR-408">AIR-408</a>
     <a href="#AIR-501">AIR-501</a>
     <a href="#AIR-502">AIR-502</a>
     <a href="#AIR-503">AIR-503</a>
@@ -571,6 +573,19 @@
       <dd class="fix">Pick another session. Damaged files are left in place; they are never deleted by the app.</dd>
     </dl>
   </article>
+  <article class="err" id="AIR-308" aria-labelledby="AIR-308-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-308" aria-label="Link to AIR-308">AIR-308</a>
+      <h3 id="AIR-308-t">Telemetry packets do not match the UDP format</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Packets arrive on the telemetry port but do not decode: the game is set to a different UDP Format than the app, or another program is sending to the same port.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">In the game, set UDP Format to the year chosen in Settings &rarr; Telemetry &rarr; UDP packet format (or change that setting to match the game). Bad packets are skipped; good ones still count.</dd>
+    </dl>
+  </article>
   <h2 id="area-voice">Voice <a class="h-anchor" href="#area-voice" aria-label="Link to section: Voice">#</a></h2>
   <article class="err" id="AIR-401" aria-labelledby="AIR-401-t">
     <div class="err-head">
@@ -661,6 +676,19 @@
       <dd>The language pack for your chosen language is not installed and could not be downloaded.</dd>
       <dt>What to do</dt>
       <dd class="fix">Connect to the internet once so it can download. Until then the engineer speaks English.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-408" aria-labelledby="AIR-408-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-408" aria-label="Link to AIR-408">AIR-408</a>
+      <h3 id="AIR-408-t">Push-to-talk button not found</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The wheel, button box or controller your push-to-talk button is on is unplugged, or push to talk is not supported on this system (it needs Windows).</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Plug the device back in (it is picked up again within a second), or bind another button in Settings &rarr; Audio &rarr; Push to talk. Until then the engineer listens by voice detection.</dd>
     </dl>
   </article>
   <h2 id="area-web-server">Web server <a class="h-anchor" href="#area-web-server" aria-label="Link to section: Web server">#</a></h2>
@@ -773,8 +801,13 @@
     <p class="legal">airaceGP is an unofficial fan-made tool. It is not affiliated with, endorsed by, or in partnership with
     Kunos Simulazioni, 505 Games, Electronic Arts Inc., Codemasters, Formula One Licensing BV or the FIA.
     F1, FORMULA 1, FIA FORMULA ONE WORLD CHAMPIONSHIP and related marks are trademarks of Formula One Licensing BV.
-    Assetto Corsa Competizione is a product of Kunos Simulazioni; F1 25 is a product of Electronic Arts Inc. and Codemasters.
-    Game names are used only to identify compatibility.</p>
+    Assetto Corsa Competizione is a game by Kunos Simulazioni, published by 505 Games; F1 25 is a product of Electronic Arts Inc. and Codemasters.
+    Game names are used only to identify compatibility. All other product names and brands named in these docs (among them Ollama, Groq,
+    Google, Gemini, Gemma, OpenRouter, Anthropic, OpenAI, Microsoft Windows, Logitech, Fanatec, YouTube and GitHub) are the property of their respective owners;
+    naming them does not imply endorsement.</p>
+    <p class="legal">Privacy: these docs set no cookies, run no analytics and collect no personal data; fonts are served from this site.
+    They are hosted on GitHub Pages, which keeps standard server logs
+    (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>).</p>
   </div>
 </footer>
 <script src="assets/docs.js" defer></script>
