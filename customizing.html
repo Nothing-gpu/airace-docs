@@ -87,6 +87,9 @@
     <li><strong>Verbosity</strong>: how much detail each call carries.</li>
     <li><strong>Call interval</strong>: how often the engineer considers speaking on its own.</li>
     <li><strong>Allow the engineer to stay quiet</strong>: lets it say nothing when there is nothing worth saying.</li>
+    <li><strong>Quiet button</strong> (Settings &rarr; Audio, or <strong>Quiet</strong> on the home bar): a button on your
+    wheel (or a key) that toggles quiet mode for the session. The engineer stops volunteering routine calls and says so;
+    your questions are still answered and urgent calls still come through. Press again for the radio back.</li>
     <li><strong>Space between calls</strong> (0 to 120 s): a routine call that would land sooner than this after the last one is dropped.
     Urgent calls and your questions always go out. Off at 0.</li>
     <li><strong>Longest routine call</strong> (5 to 60 words): shortens a volunteered call, at a whole sentence where it can.
@@ -97,6 +100,8 @@
   <h2 id="topics">What it talks about <a class="h-anchor" href="#topics" aria-label="Link to section: What it talks about">#</a></h2>
   <ul>
     <li><strong>Fuel updates</strong> on or off, and the fuel plan to the flag.</li>
+    <li><strong>Drink reminder</strong> (0 to 60 min): every this many minutes of driving the engineer reminds you to
+    drink. The clock only runs while you are on track. Off at 0.</li>
     <li><strong>Say what's on the dash</strong>: read out dash warnings.</li>
     <li><strong>Warn about the mandatory pit stop</strong> and <strong>First reminder</strong>: when the first reminder comes.</li>
     <li><strong>Sector coaching</strong> (beta): names the sector where you lose the most time against your own best.
@@ -136,7 +141,11 @@
   <ul>
     <li><strong>Record sessions</strong>: keep a recording of each session for the Analysis page. Recordings stay on your PC.</li>
     <li><strong>ACC broadcasting</strong>: read rivals and gaps from ACC's Broadcasting API (read-only).</li>
-    <li><strong>UDP format and port</strong> (F1 25): must match the game's telemetry settings.</li>
+    <li><strong>UDP format and port</strong> (F1 25): must match the game's telemetry settings. If packets do not
+    match, the app skips them and shows <a href="errors.html">AIR-308</a>.</li>
+    <li><strong>Forward UDP</strong> (F1 25): F1 sends telemetry to one address only. List up to four
+    <code>host:port</code> targets, for example <code>127.0.0.1:20777</code>, and the app re-sends every packet there
+    unchanged, so SimHub, RaceLab or a motion rig keep working. Point those tools at the port you list.</li>
     <li><strong>LAN dashboard</strong>: show the dashboard to another device on your network. Keys and restart stay on the race PC.</li>
   </ul>
   <h2 id="dev">Developer page <a class="h-anchor" href="#dev" aria-label="Link to section: Developer page">#</a></h2>
