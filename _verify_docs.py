@@ -195,6 +195,10 @@ def internal(href, page):
 def main():
     from playwright.sync_api import sync_playwright
 
+    # Refresh contract: real app keys/defaults and sourced, complete claims.
+    from _verify_llms import verify
+    check('9 sourced claims and real app settings', verify(), [])
+
     # 7 first: it needs no browser.
     hits = []
     for f in sorted(ROOT.rglob('*')):
@@ -326,6 +330,9 @@ def main():
 
 
 if __name__ == '__main__':
+    if '--content-only' in sys.argv:
+        from _verify_llms import main as content_main
+        sys.exit(content_main())
     try:
         main()
     except Exception as exc:  # a crash is a failure, never a pass
