@@ -85,7 +85,7 @@
   <p class="lead">Every problem the app reports carries a code like <code>AIR-201</code>. Each notice in
   the app shows its code and what to do, and the code links straight to its entry on this page. API
   error responses carry the same codes.</p>
-  <p>There are <span id="code-count">48</span> codes. Each has its own address, for example
+  <p>There are <span id="code-count">50</span> codes. Each has its own address, for example
   <a href="errors.html#AIR-208"><code>docs.airacegp.com/errors#AIR-208</code></a>. Codes are permanent: a
   number is never reused for a different problem. Severity is <span class="lvl error">Error</span> when
   something stopped working, <span class="lvl warn">Warning</span> when the app carried on, and
@@ -98,7 +98,7 @@
     <li><a href="#area-settings">Settings <span class="r">AIR-101&ndash;106</span></a></li>
     <li><a href="#area-ai-providers">AI providers <span class="r">AIR-201&ndash;214</span></a></li>
     <li><a href="#area-local-ollama">Local Ollama <span class="r">AIR-251&ndash;255</span></a></li>
-    <li><a href="#area-telemetry">Telemetry <span class="r">AIR-301&ndash;308</span></a></li>
+    <li><a href="#area-telemetry">Telemetry <span class="r">AIR-301&ndash;310</span></a></li>
     <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;408</span></a></li>
     <li><a href="#area-web-server">Web server <span class="r">AIR-501&ndash;506</span></a></li>
     <li><a href="#area-app">App <span class="r">AIR-901</span></a></li>
@@ -137,6 +137,8 @@
     <a href="#AIR-306">AIR-306</a>
     <a href="#AIR-307">AIR-307</a>
     <a href="#AIR-308">AIR-308</a>
+    <a href="#AIR-309">AIR-309</a>
+    <a href="#AIR-310">AIR-310</a>
     <a href="#AIR-401">AIR-401</a>
     <a href="#AIR-402">AIR-402</a>
     <a href="#AIR-403">AIR-403</a>
@@ -584,6 +586,32 @@
       <dd>Packets arrive on the telemetry port but do not decode: the game is set to a different UDP Format than the app, or another program is sending to the same port.</dd>
       <dt>What to do</dt>
       <dd class="fix">In the game, set UDP Format to the year chosen in Settings &rarr; Telemetry &rarr; UDP packet format (or change that setting to match the game). Bad packets are skipped; good ones still count.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-309" aria-labelledby="AIR-309-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-309" aria-label="Link to AIR-309">AIR-309</a>
+      <h3 id="AIR-309-t">Le Mans Ultimate is Windows-only</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>Le Mans Ultimate publishes its telemetry as a Windows shared-memory mapping (LMU_Data), which does not exist on this operating system.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Run the app on the Windows PC the game runs on, or pick another game in Settings &rarr; Telemetry. Le Mans Ultimate support is a beta that has not been tried on a real PC yet.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-310" aria-labelledby="AIR-310-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-310" aria-label="Link to AIR-310">AIR-310</a>
+      <h3 id="AIR-310-t">LMU shared-memory layout mismatch</h3>
+      <span class="lvl error">Error</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The size of the LMU_Data mapping does not match the layout this app was built for (a game update changed it), or the app has no verified layout yet, so it refuses to read rather than show wrong numbers.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Update the app. Check that the game is running as the same user (and with the same administrator rights) as the app, and whether Settings &rarr; Gameplay &rarr; Enable Plugins in the game needs to be on. Le Mans Ultimate support is a beta that has not been tried on a real PC yet.</dd>
     </dl>
   </article>
   <h2 id="area-voice">Voice <a class="h-anchor" href="#area-voice" aria-label="Link to section: Voice">#</a></h2>

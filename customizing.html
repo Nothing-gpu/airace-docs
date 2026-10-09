@@ -61,7 +61,11 @@
             <li><a href="#voice">Voice and language</a></li>
             <li><a href="#brain">The AI behind it</a></li>
             <li><a href="#data">Data and network</a></li>
-            <li><a href="#dev">Developer page</a></li>
+            <li><a href="#memory">Driver memory</a></li>
+            <li><a href="#strategy">Strategy planner</a></li>
+            <li><a href="#setup-advice">Setup advice</a></li>
+            <li><a href="#spotter">Spotter beta</a></li>
+            <li><a href="#dev">Developer tests</a></li>
           </ol>
         </li>
         <li><a href="errors.html">Error codes</a></li>
@@ -78,81 +82,111 @@
   <article class="doc">
 
     <h1>Customizing the engineer</h1>
-  <p class="lead">Almost everything about how the engineer behaves is a setting. Each one saves the moment you
-  change it and applies from the next call, with no restart. Open <strong>Settings</strong> and look in the groups
+  <p class="lead">Almost everything about how the engineer behaves is a setting. The new controls below include their defaults. Open <strong>Settings</strong> and look in the groups
   below. Games differ: items marked ACC only appear for Assetto Corsa Competizione.</p>
   <h2 id="talking">How much it talks <a class="h-anchor" href="#talking" aria-label="Link to section: How much it talks">#</a></h2>
   <ul>
-    <li><strong>Chattiness</strong> (0 to 100): how readily it volunteers an unprompted call.</li>
-    <li><strong>Verbosity</strong>: how much detail each call carries.</li>
-    <li><strong>Call interval</strong>: how often the engineer considers speaking on its own.</li>
-    <li><strong>Allow the engineer to stay quiet</strong>: lets it say nothing when there is nothing worth saying.</li>
-    <li><strong>Quiet button</strong> (Settings &rarr; Audio, or <strong>Quiet</strong> on the home bar): a button on your
+    <li data-setting="chattiness"><strong>Chattiness</strong> (0 to 100): how readily it volunteers an unprompted call.</li>
+    <li data-setting="verbosity"><strong>Verbosity</strong>: how much detail each call carries.</li>
+    <li data-setting="tick_seconds"><strong>Call interval</strong>: how often the engineer considers speaking on its own.</li>
+    <li data-setting="tick_silence_allowed"><strong>Allow the engineer to stay quiet</strong>: lets it say nothing when there is nothing worth saying.</li>
+    <li data-setting="quiet_binding"><strong>Quiet button</strong> (Settings &rarr; Audio, or <strong>Quiet</strong> on the home bar): a button on your
     wheel (or a key) that toggles quiet mode for the session. The engineer stops volunteering routine calls and says so;
     your questions are still answered and urgent calls still come through. Press again for the radio back.</li>
-    <li><strong>Space between calls</strong> (0 to 120 s): a routine call that would land sooner than this after the last one is dropped.
+    <li data-setting="min_call_gap_s"><strong>Space between calls</strong>. <span data-default="min_call_gap_s">Default: 0 (off).</span> Range: 0 to 120 s; a routine call that would land sooner than this after the last one is dropped.
     Urgent calls and your questions always go out. Off at 0.</li>
-    <li><strong>Longest routine call</strong> (5 to 60 words): shortens a volunteered call, at a whole sentence where it can.
+    <li data-setting="max_call_words"><strong>Longest routine call</strong>. <span data-default="max_call_words">Default: 0 (off).</span> When enabled, 5 to 60 words; shortens a volunteered call, at a whole sentence where it can.
     Your questions are never shortened. Off at 0.</li>
-    <li><strong>Hold calls through corners</strong> and <strong>Longest hold</strong> (ACC only): waits for the corner exit before speaking,
+    <li data-setting="corner_hold corner_hold_max_s"><strong>Hold calls through corners</strong> and <strong>Longest hold</strong> (ACC only): waits for the corner exit before speaking,
     never past the longest hold, and never for urgent calls.</li>
   </ul>
   <h2 id="topics">What it talks about <a class="h-anchor" href="#topics" aria-label="Link to section: What it talks about">#</a></h2>
   <ul>
-    <li><strong>Fuel updates</strong> on or off, and the fuel plan to the flag.</li>
-    <li><strong>Drink reminder</strong> (0 to 60 min): every this many minutes of driving the engineer reminds you to
+    <li data-setting="suppress_fuel fuel_plan"><strong>Fuel updates</strong> on or off, and the fuel plan to the flag.</li>
+    <li data-setting="drink_every_min"><strong>Drink reminder</strong> (0 to 60 min): every this many minutes of driving the engineer reminds you to
     drink. The clock only runs while you are on track. Off at 0.</li>
-    <li><strong>Say what's on the dash</strong>: read out dash warnings.</li>
-    <li><strong>Warn about the mandatory pit stop</strong> and <strong>First reminder</strong>: when the first reminder comes.</li>
-    <li><strong>Sector coaching</strong> (beta): names the sector where you lose the most time against your own best.
-    It stays quiet on invalid or incident laps.</li>
-    <li><strong>Spin detection</strong>: handled in the app, with an option to hand it to the AI instead.</li>
-    <li><strong>Custom instructions</strong>: a few lines of your own guidance, applied on top of the built-in prompt.</li>
+    <li data-setting="dash_readout"><strong>Say what's on the dash</strong>: read out dash warnings.</li>
+    <li data-setting="pit_deadline pit_deadline_min"><strong>Warn about the mandatory pit stop</strong> and <strong>First reminder</strong>: when the first reminder comes.</li>
+    <li data-setting="coaching_beta">Sector coaching is ACC only, beta and off by default. It compares sectors with your own best and stays quiet on invalid or incident laps.</li>
+    <li data-setting="spin_detect_ai spin_ai_raw"><strong>Spin detection</strong>: handled in the app, with an option to hand it to the AI instead.</li>
+    <li data-setting="custom_instructions"><strong>Custom instructions</strong>: a few lines of your own guidance, applied on top of the built-in prompt.</li>
   </ul>
+  <p>Space between calls drops routine calls that arrive too soon; Longest routine call shortens volunteered calls. Both are off by default and neither shortens your answers.</p>
   <h2 id="voice">Voice and language <a class="h-anchor" href="#voice" aria-label="Link to section: Voice and language">#</a></h2>
   <ul>
-    <li><strong>Engineer language</strong>: nine languages, translated on your PC with no cloud service.
+    <li data-setting="language"><strong>Engineer language</strong>: nine languages, translated on your PC with no cloud service.
     A language pack downloads once, the first time you pick it.</li>
-    <li><strong>Voices</strong>: the English default is Cori, a clear British voice; a male American English voice
+    <li data-setting="piper_voice tts_volume"><strong>Voices</strong>: the English default is Cori, a clear British voice; a male American English voice
     downloads from the same list. Choose an installed voice or download another from Settings &rarr; Voice, and set the <strong>volume</strong>.</li>
-    <li><strong>Microphone and speech recognition</strong>: pick the input, the speech model size, and whether the mic is on.</li>
-    <li><strong>Interrupt sensitivity</strong>: how loud you must be to cut the engineer off.</li>
-    <li><strong>Wake word</strong>: optionally start a question by name instead of by voice activity.</li>
-    <li><strong>Push to talk</strong> (Settings &rarr; Audio): talk with a button on your wheel (Logitech G923, G29,
-    G920, Fanatec, Moza, a button box: anything Windows sees as a game controller), a D-pad direction or a key.
+    <li data-setting="input_device voice_enabled whisper_model stt_engine"><strong>Microphone and speech recognition</strong>: pick the input, the speech model size, and whether the mic is on.</li>
+    <li data-setting="interrupt_rms"><strong>Interrupt sensitivity</strong>: how loud you must be to cut the engineer off.</li>
+    <li data-setting="wake_word_enabled"><strong>Wake word</strong>: optionally start a question by name instead of by voice activity.</li>
+    <li data-setting="ptt_mode ptt_binding"><strong>Push to talk</strong> (Settings &rarr; Audio): talk with a detected controller button, a D-pad direction or a key.
     Press <strong>Bind button</strong>, then the button. <strong>Hold</strong>: the engineer hears you only while it is
     held, and letting go sends the question. <strong>Tap</strong>: tap once, then speak; the question ends when you
     stop. Pressing it while the engineer talks cuts him off. It works while the game has focus; if the wheel is
     unplugged, voice detection takes over and the app shows <a href="errors.html">AIR-408</a>.
     <strong>Off</strong> leaves voice detection on its own.</li>
-    <li><strong>App language</strong> is separate from the engineer's language.</li>
+    <li data-setting="app_language"><strong>App language</strong> is separate from the engineer's language.</li>
   </ul>
   <h2 id="brain">The AI behind it <a class="h-anchor" href="#brain" aria-label="Link to section: The AI behind it">#</a></h2>
   <ul>
-    <li><strong>Model chain</strong>: one chain for unprompted calls and one for your questions, each an ordered list of
+    <li data-setting="tick_chain question_chain"><strong>Model chain</strong>: one chain for unprompted calls and one for your questions, each an ordered list of
     providers and models. See <a href="ai.html#model-chain">The model chain</a>.</li>
-    <li><strong>Use fallbacks</strong>: if the first entry fails, ask the next. A failure shows its
+    <li data-setting="use_fallback"><strong>Use fallbacks</strong>: if the first entry fails, ask the next. A failure shows its
     <a href="errors.html">error code</a> and the fix.</li>
-    <li><strong>Smart routing</strong>: send simple questions to a small, fast model.</li>
-    <li><strong>Custom endpoint</strong>: any OpenAI-compatible service. Its terms and data handling are between you and its operator.</li>
-    <li><strong>Prompt override</strong>: replace the built-in system prompt entirely. For advanced use.</li>
+    <li data-setting="smart_routing smart_engine smart_model"><strong>Smart routing</strong>: send simple questions to a small, fast model.</li>
+    <li data-setting="custom_api_url custom_api_model"><strong>Custom endpoint</strong>: any OpenAI-compatible service. Its terms and data handling are between you and its operator.</li>
+    <li data-setting="prompt_override custom_system_prompt"><strong>Prompt override</strong>: replace the built-in system prompt entirely. For advanced use.</li>
   </ul>
+  <p>If every AI provider fails, a driver-question fallback uses the app's facts or says plainly that there is no answer.</p>
   <h2 id="data">Data and network <a class="h-anchor" href="#data" aria-label="Link to section: Data and network">#</a></h2>
   <ul>
-    <li><strong>Record sessions</strong>: keep a recording of each session for the Analysis page. Recordings stay on your PC.</li>
-    <li><strong>ACC broadcasting</strong>: read rivals and gaps from ACC's Broadcasting API (read-only).</li>
-    <li><strong>UDP format and port</strong> (F1 25): must match the game's telemetry settings. If packets do not
+    <li data-setting="record_sessions"><strong>Record sessions</strong>: keep a recording of each session for the Analysis page. Recordings stay on your PC.</li>
+    <li data-setting="broadcast_enabled broadcast_port broadcast_password"><strong>ACC broadcasting</strong>: read rivals and gaps from ACC's Broadcasting API (read-only).</li>
+    <li data-setting="udp_format"><strong>UDP format</strong> (F1 25): must match the game's telemetry settings. If packets do not
     match, the app skips them and shows <a href="errors.html">AIR-308</a>.</li>
-    <li><strong>Forward UDP</strong> (F1 25): F1 sends telemetry to one address only. List up to four
+    <li data-setting="udp_forward"><strong>Forward UDP</strong> (F1 25): F1 sends telemetry to one address only. List up to four
     <code>host:port</code> targets, for example <code>127.0.0.1:20777</code>, and the app re-sends every packet there
     unchanged, so SimHub, RaceLab or a motion rig keep working. Point those tools at the port you list.</li>
-    <li><strong>LAN dashboard</strong>: show the dashboard to another device on your network. Keys and restart stay on the race PC.</li>
+    <li data-setting="lan_enabled"><strong>LAN dashboard</strong>: show the dashboard to another device on your network. Keys and restart stay on the race PC.</li>
   </ul>
+  <section id="memory">
+  <h2>Driver memory across sessions</h2>
+  <p data-setting="driver_memory">Settings &rarr; AI &rarr; <strong>Remember me between sessions</strong>. <span data-default="driver_memory">Default: on.</span></p>
+  <p>Driver memory keeps the last 8 sessions per game, track and car in driver_memory.json on your PC. The file is never uploaded.</p>
+  <p>It remembers best and typical clean laps, fuel per lap, hot tyre pressures and temperatures, peak brake temperatures, pit stops and where the car stepped out as a percentage of the lap.</p>
+  <p>Remember me between sessions is on by default. Turning it off stops recording and recall; Forget everything clears saved driver memory.</p>
+  <p>Memory is ACC only for now: F1 frames have no track/car identity. The remembered summary can enter requests to your chosen AI provider; its spoken wording has not had a live-model check.</p>
+  </section>
+  <section id="strategy">
+  <h2>Strategy planner</h2>
+  <p>Ask about stops or fuel in an ACC race: the strategy planner works out when to stop, how much to add and whether the fuel reaches the flag, in laps, never litres, with a 1-lap reserve.</p>
+  <p>Fuel saving is suggested only within a realistic limit. The planner does not model tyre wear, traffic, undercuts or safety cars; ACC pit-window units remain unverified, so that window is not used.</p>
+  </section>
+  <section id="setup-advice">
+  <h2>Setup advice</h2>
+  <p>Setup advice compares measured hot tyre pressures with the dry or wet pressure window and gives the change in psi per corner, using recent sessions or the live frame when memory is off.</p>
+  <p>This is not a setup builder. Brakes, camber, toe, aero, ride height, dampers, bars and gearing are not measured for setup advice, so it gives no values for them and no target cold pressure.</p>
+  </section>
+  <p>Setup advice is offered when you ask about setup or pressure in ACC, not during routine calls. The newest remembered session decides the change. For an unmeasured topic, the current spoken answer may be the generic “No read on that yet”.</p>
+  <section id="spotter">
+  <h2>Spotter beta</h2>
+  <p data-setting="spotter_mode">Settings &rarr; AI &rarr; <strong>Spotter</strong>. <span data-default="spotter_mode">Default: off.</span></p>
+  <p>The Spotter is ACC only, beta and off by default in Settings, AI, Spotter.</p>
+  <p>A dedicated fast rivals feed drives car left, car right, three wide and clear calls. A call cuts the engineer off; it can resume afterwards, although a routine line that waits too long is dropped.</p>
+  <p>Tested in simulation, not verified on a real PC: opponent updates, left/right in traffic and audio timing. The owner's ACC update-rate test must establish whether the feed is good enough before enabling the Spotter in a race.</p>
+  </section>
   <h2 id="dev">Developer page <a class="h-anchor" href="#dev" aria-label="Link to section: Developer page">#</a></h2>
-  <p>Turn on <strong>Developer mode</strong> (Settings &rarr; About) to add a <strong>Dev</strong> page beside Settings. It shows what each
-  detector sees, what the AI is given, and the engine's recent events, and has buttons to force a tick, play a radio check and
-  reset the app. <strong>Reset app</strong> returns settings and the engineer's memory to a first run and keeps your recorded sessions;
-  API keys are removed only if you tick the box.</p>
+  <p data-setting="dev_mode"><strong>Developer mode</strong>. <span data-default="dev_mode">Default: off.</span>
+  Tap the app version five times to reveal the local <strong>Dev</strong> page. It shows detector states,
+  what the AI is given and recent events, with Force tick and Radio check actions. Reset app is in About.</p>
+  <p>Wheel and buttons lights detected inputs while held, to check whether a button can be bound for push to talk. Hardware compatibility is unverified on a real PC; try your device in this view.</p>
+  <p>Run the ACC update-rate test during a race with moving opponents for two minutes and keep acc_cadence.json for review.</p>
+  <p>The LMU recorder is a tester tool: start recording, add notes while driving, then stop to write the report zip. It does not make Le Mans Ultimate supported.</p>
+  <p>The Spotter live view shows feed age, rivals and direction; the demo plays a call over a long engineer line so you can hear the cut and resume.</p>
+  <p>Developer tools are local only. Wheel lights and the ACC and LMU tools are not verified on a real PC; the game tools need Windows. Browser checks used a mocked backend.</p>
+  <p>Le Mans Ultimate is not supported yet. Its game integration is fixture-only and unverified on a real PC; the recorder exists for testers.</p>
 
   <nav class="pager" aria-label="Previous and next page">
     <a class="prev" href="ai.html" aria-label="Previous: Choosing your AI"><span class="t">&larr; Choosing your AI</span></a>

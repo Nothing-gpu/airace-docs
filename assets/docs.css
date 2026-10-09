@@ -81,7 +81,8 @@ main{min-width:0;padding:40px var(--gutter) 88px}
   .shell{grid-template-columns:minmax(0,1fr)}
   .menu-btn{display:inline-flex;align-items:center}
   .top-links{display:none}
-  .side{display:none;position:fixed;top:var(--head);left:0;right:0;bottom:0;max-height:none;z-index:40;background:#000;border-right:0;padding:20px var(--gutter) 40px}
+  /* A long menu must scroll within the viewport, never grow under the header. */
+  .side{height:calc(100dvh - var(--head));min-height:0;align-self:auto;display:none;position:fixed;top:var(--head);left:0;right:0;bottom:0;max-height:none;z-index:40;background:#000;border-right:0;padding:20px var(--gutter) 40px}
   .side.open{display:block}
   .side a{font-size:18px;padding:11px 10px}
   .side .sub a{font-size:16px;padding:8px 10px}

@@ -20,9 +20,11 @@ Serves this folder the way GitHub Pages does (extensionless URLs resolve to
      (pages, scripts, images, the screenshot source data)
   8  no eyebrow: no short label stacked above text 1.5x its size (callouts
      and code blocks excepted), matching the marketing site
+  9  sourced refresh claims and real app settings/defaults (_verify_llms.py)
 
     python3 _verify_docs.py            # app at ../airarce-ui/airacee/airacee
     AIRACE_APP=/path/to/airacee/airacee python3 _verify_docs.py
+    python3 _verify_docs.py --content-only   # same content contract, no browser
 
 Chromium: PW_CHROME, else /opt/pw-browsers/chromium-1194/chrome-linux/chrome
 when it exists, else Playwright's own.

@@ -84,10 +84,8 @@
     <p class="rec-model">Ollama Cloud free tier, with <code>gemma4:31b</code></p>
     <p>One free key covers everything:</p>
     <ul>
-      <li><strong>Your questions</strong> (ACC) go to <code>gemma4:31b</code> first. In the project's
-      tests it answered 80 of 80 held-out driver questions, where <code>gpt-oss:120b</code> managed 70 to
-      74, in about 1.5 to 3 seconds.</li>
-      <li><strong>Unprompted calls</strong> use <code>gpt-oss:120b</code> on the same key.</li>
+      <li>With an Ollama Cloud key and no saved chain, gemma4:31b is the default for unprompted calls as well as driver questions.</li>
+      <li>F1 25 race questions about fuel, rivals, tyres, damage and stops use the question chain too.</li>
     </ul>
     <p>Paste the key into the <strong>Ollama Cloud</strong> card during setup and the app builds this
     chain for you. <a href="#ollama-key">Get a key</a>.</p>
@@ -115,19 +113,18 @@
   <p>The model chain is the list of providers the engineer asks, in order. It lives in
   <strong>Settings &rarr; AI &rarr; Model chain</strong>. There are two lists:</p>
   <div class="table-wrap"><table>
-    <thead><tr><th>List</th><th>Used for</th><th>Time limit</th></tr></thead>
+    <thead><tr><th>List</th><th>Used for</th><th>Scope</th></tr></thead>
     <tbody>
       <tr><td><strong>Unprompted calls</strong></td><td>Periodic check-ins and race events: everything the
-      engineer says without being asked. Also your questions in F1 25.</td><td>60 s</td></tr>
-      <tr><td><strong>Your questions</strong></td><td>What you ask the engineer in ACC.</td><td>8 s</td></tr>
+      engineer says without being asked.</td><td>Routine calls and events</td></tr>
+      <tr><td><strong>Your questions</strong></td><td>Driver questions in ACC and F1 25 races.</td><td>Questions</td></tr>
     </tbody>
   </table></div>
   <ul>
     <li>The engineer asks the first entry that has its key. An entry without a key is skipped and marked
     <em>no key</em>.</li>
     <li><strong>Use fallbacks</strong> on: if a provider fails or is rate-limited, the next one is asked.
-    Off: only the first provider with a key is asked, and if it fails the engineer stays quiet for that
-    call.</li>
+    Off: only the first provider with a key is asked. If every AI provider fails, the driver-question fallback uses measured facts or says there is no answer.</li>
     <li>Up to six entries per list. <strong>&uarr;</strong> and <strong>&darr;</strong> reorder,
     <strong>&times;</strong> removes, <strong>Reset to default</strong> goes back to the chain built from
     your keys.</li>
@@ -136,7 +133,7 @@
   <figure>
     <img src="img/settings-model-chain.webp" width="1400" height="711" loading="lazy"
       alt="Settings, AI, Model chain editor. Unprompted calls: 1 Ollama Cloud gpt-oss:120b, 2 Groq openai/gpt-oss-120b marked no key and skipped. Your questions: 1 Ollama Cloud gemma4:31b, 2 Ollama Cloud gpt-oss:120b. Each row has up, down and remove buttons, with Add provider and Reset to default below each list, and the Use fallbacks switch on." />
-    <figcaption>The chain editor. Here Groq has no key, so it is skipped until one is added.</figcaption>
+    <figcaption>An example saved chain from an earlier app screenshot, not the current default. Here Groq has no key, so it is skipped until one is added.</figcaption>
   </figure>
   <div class="callout note">
     <p class="callout-title">When the questions list applies</p>
@@ -145,16 +142,14 @@
     stay quiet</strong>, the app switches to its full prompt and your questions use the unprompted list
     instead.</p>
   </div>
-  <p>Until you save a chain, the default is: Ollama Cloud <code>gpt-oss:120b</code> for unprompted calls
-  when an Ollama key is set, and <code>gemma4:31b</code> on Ollama Cloud first for questions, followed by
-  the unprompted list.</p>
+  <p>With an Ollama Cloud key and no saved chain, gemma4:31b is the default for unprompted calls as well as driver questions.</p>
 
   <h2 id="providers">All providers <a class="h-anchor" href="#providers" aria-label="Link to section: All providers">#</a></h2>
   <div class="table-wrap"><table>
     <thead><tr><th>Provider</th><th>Key in <code>.env</code></th><th>Preset models</th><th>Notes</th></tr></thead>
     <tbody>
       <tr><td><strong>Ollama Cloud</strong></td><td><code>OLLAMA_API_KEY</code></td><td><code>gpt-oss:120b</code>, <code>gemma4:31b</code>, <code>gpt-oss:20b</code></td><td>Free tier. Recommended.</td></tr>
-      <tr><td><strong>Groq</strong></td><td><code>GROQ_API_KEY</code></td><td><code>openai/gpt-oss-120b</code>, <code>openai/gpt-oss-20b</code></td><td>Very fast. The free tier allows 8k tokens a minute. The same key enables Groq transcription.</td></tr>
+      <tr><td><strong>Groq</strong></td><td><code>GROQ_API_KEY</code></td><td><code>openai/gpt-oss-120b</code>, <code>openai/gpt-oss-20b</code></td><td>Provider limits can change. The same key enables Groq transcription.</td></tr>
       <tr><td><strong>Google Gemini</strong></td><td><code>GEMINI_API_KEY</code></td><td><code>gemini-2.5-flash</code>, <code>gemini-2.5-flash-lite</code></td><td>Free tier with a limited number of requests a day.</td></tr>
       <tr><td><strong>OpenRouter</strong></td><td><code>OPENROUTER_API_KEY</code></td><td><code>openai/gpt-oss-120b:free</code></td><td>Free models are shared and often congested.</td></tr>
       <tr><td><strong>Anthropic</strong></td><td><code>ANTHROPIC_API_KEY</code></td><td><code>claude-haiku-4-5-20251001</code></td><td>Paid.</td></tr>
