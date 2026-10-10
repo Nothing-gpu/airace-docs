@@ -20,9 +20,11 @@ Serves this folder the way GitHub Pages does (extensionless URLs resolve to
      (pages, scripts, images, the screenshot source data)
   8  no eyebrow: no short label stacked above text 1.5x its size (callouts
      and code blocks excepted), matching the marketing site
+  9  sourced refresh claims and real app settings/defaults (_verify_llms.py)
 
     python3 _verify_docs.py            # app at ../airarce-ui/airacee/airacee
     AIRACE_APP=/path/to/airacee/airacee python3 _verify_docs.py
+    python3 _verify_docs.py --content-only   # same content contract, no browser
 
 Chromium: PW_CHROME, else /opt/pw-browsers/chromium-1194/chrome-linux/chrome
 when it exists, else Playwright's own.
@@ -195,6 +197,10 @@ def internal(href, page):
 def main():
     from playwright.sync_api import sync_playwright
 
+    # Refresh contract: real app keys/defaults and sourced, complete claims.
+    from _verify_llms import verify
+    check('9 sourced claims and real app settings', verify(), [])
+
     # 7 first: it needs no browser.
     hits = []
     for f in sorted(ROOT.rglob('*')):
@@ -326,6 +332,9 @@ def main():
 
 
 if __name__ == '__main__':
+    if '--content-only' in sys.argv:
+        from _verify_llms import main as content_main
+        sys.exit(content_main())
     try:
         main()
     except Exception as exc:  # a crash is a failure, never a pass
