@@ -85,7 +85,7 @@
   <p class="lead">Every problem the app reports carries a code like <code>AIR-201</code>. Each notice in
   the app shows its code and what to do, and the code links straight to its entry on this page. API
   error responses carry the same codes.</p>
-  <p>There are <span id="code-count">50</span> codes. Each has its own address, for example
+  <p>There are <span id="code-count">52</span> codes. Each has its own address, for example
   <a href="errors.html#AIR-208"><code>docs.airacegp.com/errors#AIR-208</code></a>. Codes are permanent: a
   number is never reused for a different problem. Severity is <span class="lvl error">Error</span> when
   something stopped working, <span class="lvl warn">Warning</span> when the app carried on, and
@@ -99,7 +99,7 @@
     <li><a href="#area-ai-providers">AI providers <span class="r">AIR-201&ndash;214</span></a></li>
     <li><a href="#area-local-ollama">Local Ollama <span class="r">AIR-251&ndash;255</span></a></li>
     <li><a href="#area-telemetry">Telemetry <span class="r">AIR-301&ndash;310</span></a></li>
-    <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;408</span></a></li>
+    <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;410</span></a></li>
     <li><a href="#area-web-server">Web server <span class="r">AIR-501&ndash;506</span></a></li>
     <li><a href="#area-app">App <span class="r">AIR-901</span></a></li>
   </ul>
@@ -147,6 +147,8 @@
     <a href="#AIR-406">AIR-406</a>
     <a href="#AIR-407">AIR-407</a>
     <a href="#AIR-408">AIR-408</a>
+    <a href="#AIR-409">AIR-409</a>
+    <a href="#AIR-410">AIR-410</a>
     <a href="#AIR-501">AIR-501</a>
     <a href="#AIR-502">AIR-502</a>
     <a href="#AIR-503">AIR-503</a>
@@ -717,6 +719,32 @@
       <dd>The wheel, button box or controller your push-to-talk button is on is unplugged, or push to talk is not supported on this system (it needs Windows).</dd>
       <dt>What to do</dt>
       <dd class="fix">Plug the device back in (it is picked up again within a second), or bind another button in Settings &rarr; Audio &rarr; Push to talk. Until then the engineer listens by voice detection.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-409" aria-labelledby="AIR-409-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-409" aria-label="Link to AIR-409">AIR-409</a>
+      <h3 id="AIR-409-t">The online voice is not answering</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The Gemini or Deepgram voice you chose could not speak: its free limit for now is used up, it was too slow, there is no connection to it, or it does not speak your language. The engineer keeps talking in the built-in voice.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Nothing needed: the online voice is tried again by itself. Settings &rarr; Voice says what happened. A daily limit resets overnight (Google counts midnight Pacific time); to talk in the built-in voice only, choose it in Settings &rarr; Voice.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-410" aria-labelledby="AIR-410-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-410" aria-label="Link to AIR-410">AIR-410</a>
+      <h3 id="AIR-410-t">The online voice needs a working key</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>You chose the Gemini or Deepgram voice, but its key is missing, was not accepted, or Deepgram's free credit is used up. The engineer speaks in the built-in voice meanwhile.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Settings &rarr; Secrets: paste the key (Google AI Studio gives a Gemini key free, no card; Deepgram gives a free credit, no card), then press Test voice in Settings &rarr; Voice. Or choose the built-in voice there.</dd>
     </dl>
   </article>
   <h2 id="area-web-server">Web server <a class="h-anchor" href="#area-web-server" aria-label="Link to section: Web server">#</a></h2>
