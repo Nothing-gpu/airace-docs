@@ -85,7 +85,7 @@
   <p class="lead">Every problem the app reports carries a code like <code>AIR-201</code>. Each notice in
   the app shows its code and what to do, and the code links straight to its entry on this page. API
   error responses carry the same codes.</p>
-  <p>There are <span id="code-count">52</span> codes. Each has its own address, for example
+  <p>There are <span id="code-count">55</span> codes. Each has its own address, for example
   <a href="errors.html#AIR-208"><code>docs.airacegp.com/errors#AIR-208</code></a>. Codes are permanent: a
   number is never reused for a different problem. Severity is <span class="lvl error">Error</span> when
   something stopped working, <span class="lvl warn">Warning</span> when the app carried on, and
@@ -99,7 +99,7 @@
     <li><a href="#area-ai-providers">AI providers <span class="r">AIR-201&ndash;214</span></a></li>
     <li><a href="#area-local-ollama">Local Ollama <span class="r">AIR-251&ndash;255</span></a></li>
     <li><a href="#area-telemetry">Telemetry <span class="r">AIR-301&ndash;310</span></a></li>
-    <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;410</span></a></li>
+    <li><a href="#area-voice">Voice <span class="r">AIR-401&ndash;413</span></a></li>
     <li><a href="#area-web-server">Web server <span class="r">AIR-501&ndash;506</span></a></li>
     <li><a href="#area-app">App <span class="r">AIR-901</span></a></li>
   </ul>
@@ -149,6 +149,9 @@
     <a href="#AIR-408">AIR-408</a>
     <a href="#AIR-409">AIR-409</a>
     <a href="#AIR-410">AIR-410</a>
+    <a href="#AIR-411">AIR-411</a>
+    <a href="#AIR-412">AIR-412</a>
+    <a href="#AIR-413">AIR-413</a>
     <a href="#AIR-501">AIR-501</a>
     <a href="#AIR-502">AIR-502</a>
     <a href="#AIR-503">AIR-503</a>
@@ -718,7 +721,7 @@
       <dt>What happened</dt>
       <dd>The wheel, button box or controller your push-to-talk button is on is unplugged, or push to talk is not supported on this system (it needs Windows).</dd>
       <dt>What to do</dt>
-      <dd class="fix">Plug the device back in (it is picked up again within a second), or bind another button in Settings &rarr; Audio &rarr; Push to talk. Until then the engineer listens by voice detection.</dd>
+      <dd class="fix">Plug the device back in (it is picked up again within a second), or bind another button in Settings &rarr; Audio &rarr; Push to talk. Until then the engineer listens by voice detection. In keyword mode (Settings &rarr; Keyword engineer) a question needs the button, so none is heard until it is back.</dd>
     </dl>
   </article>
   <article class="err" id="AIR-409" aria-labelledby="AIR-409-t">
@@ -745,6 +748,45 @@
       <dd>You chose the Gemini or Deepgram voice, but its key is missing, was not accepted, or Deepgram's free credit is used up. The engineer speaks in the built-in voice meanwhile.</dd>
       <dt>What to do</dt>
       <dd class="fix">Settings &rarr; Secrets: paste the key (Google AI Studio gives a Gemini key free, no card; Deepgram gives a free credit, no card), then press Test voice in Settings &rarr; Voice. Or choose the built-in voice there.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-411" aria-labelledby="AIR-411-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-411" aria-label="Link to AIR-411">AIR-411</a>
+      <h3 id="AIR-411-t">The keyword engineer has no push-to-talk button</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The keyword engineer answers only while you hold or tap a push-to-talk button, and none is set up: nothing is bound, or push to talk is switched off. Speaking without it is ignored, so the engineer stays silent.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Settings &rarr; Audio &rarr; Push to talk: bind a wheel button or key and choose Hold or Tap. Or choose the AI engineer again in Settings &rarr; Keyword engineer.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-412" aria-labelledby="AIR-412-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-412" aria-label="Link to AIR-412">AIR-412</a>
+      <h3 id="AIR-412-t">The keyword engineer works with ACC only</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>The keyword engineer reads Assetto Corsa Competizione's telemetry, and the Sim in Settings &rarr; Telemetry is another game, so every question is answered "works with ACC only".</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Pick Assetto Corsa Competizione in Settings &rarr; Telemetry, or choose the AI engineer again in Settings &rarr; Keyword engineer.</dd>
+    </dl>
+  </article>
+  <article class="err" id="AIR-413" aria-labelledby="AIR-413-t">
+    <div class="err-head">
+      <a class="err-code" href="#AIR-413" aria-label="Link to AIR-413">AIR-413</a>
+      <h3 id="AIR-413-t">The keyword engineer's phrase file has a mistake</h3>
+      <span class="lvl warn">Warning</span>
+    </div>
+    <dl>
+      <dt>What happened</dt>
+      <dd>voice_intents.json, the file with the words the keyword engineer listens for and what it says, could not be read or has a mistake (the notice names it). The engineer keeps using the last good copy.</dd>
+      <dt>What to do</dt>
+      <dd class="fix">Open the file from Settings &rarr; Keyword engineer and correct the mistake the notice names (a missing comma or quote is the usual one). It is read again before the next question, so there is nothing to restart.</dd>
     </dl>
   </article>
   <h2 id="area-web-server">Web server <a class="h-anchor" href="#area-web-server" aria-label="Link to section: Web server">#</a></h2>
