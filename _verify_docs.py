@@ -31,6 +31,7 @@ when it exists, else Playwright's own.
 """
 from __future__ import annotations
 
+import html
 import importlib.util
 import os
 import re
@@ -62,6 +63,19 @@ def load_errors():
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod.ERRORS
+
+
+def load_providers():
+    spec = importlib.util.spec_from_file_location('app_providers', APP / 'providers.py')
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod.PROVIDERS
+
+
+def page_text(name):
+    """A page as a reader sees it: tags dropped, entities decoded, whitespace folded."""
+    raw = (ROOT / name).read_text(encoding='utf-8')
+    return ' '.join(html.unescape(re.sub(r'<[^>]+>', ' ', raw)).split())
 
 
 def pages():
@@ -213,6 +227,18 @@ def main():
     names = pages()
     check('0 the site has its pages', [n for n in ('index.html', 'setup.html', 'ai.html',
           'errors.html', 'troubleshooting.html', 'customizing.html', '404.html') if n not in names], [])
+
+    # 10: the Gemini presets and budgets on ai.html are the app's. The paragraph once said Gemma allowed "about one engineer call a
+    # minute"; the live test (2026-10-23) showed that is wrong for the default prompt (about three) and that the real catch is speed.
+    gem = load_providers()['gemini']
+    ai_text = page_text('ai.html')
+    budgets = ai_text[ai_text.find('Gemini\u2019s free budgets'):][:1200] if 'Gemini\u2019s free budgets' in ai_text else ''
+    check('10 ai.html offers the Gemini models the app lists first', [m for m in gem['models'][:4] if m not in ai_text], [])
+    check('10a ...and a "Gemini\u2019s free budgets" paragraph gives the app note\u2019s figures',
+          [f for f in ('500 requests a day', '15 a minute', '14,400 a day', '16K tokens a minute', '20 a day') if f not in budgets], [])
+    check('10b ...and does not call Gemma one call a minute (about three with the default prompt, and slow in a short test)',
+          ('one call a minute' in ai_text or 'one engineer call' in ai_text,
+           'three' in budgets and 'default prompt' in budgets and 'slow' in budgets), (False, True))
 
     errors_reg = load_errors()
     srv = ThreadingHTTPServer(('127.0.0.1', 0), partial(PagesHandler, directory=str(ROOT)))
