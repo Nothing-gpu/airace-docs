@@ -64,8 +64,7 @@
             <li><a href="#memory">Driver memory</a></li>
             <li><a href="#strategy">Strategy planner</a></li>
             <li><a href="#setup-advice">Setup advice</a></li>
-            <li><a href="#spotter">Spotter beta</a></li>
-            <li><a href="#dev">Developer tests</a></li>
+            <li><a href="#spotter">Spotter</a></li>
           </ol>
         </li>
         <li><a href="errors.html">Error codes</a></li>
@@ -107,7 +106,7 @@
     drink. The clock only runs while you are on track. Off at 0.</li>
     <li data-setting="dash_readout"><strong>Say what's on the dash</strong>: read out dash warnings.</li>
     <li data-setting="pit_deadline pit_deadline_min"><strong>Warn about the mandatory pit stop</strong> and <strong>First reminder</strong>: when the first reminder comes.</li>
-    <li data-setting="coaching_beta">Sector coaching is ACC only, beta and off by default. It compares sectors with your own best and stays quiet on invalid or incident laps.</li>
+    <li data-setting="coaching_beta">Sector coaching is ACC only and off by default. It compares sectors with your own best and stays quiet on invalid or incident laps.</li>
     <li data-setting="spin_detect_ai spin_ai_raw"><strong>Spin detection</strong>: handled in the app, with an option to hand it to the AI instead.</li>
     <li data-setting="custom_instructions"><strong>Custom instructions</strong>: a few lines of your own guidance, applied on top of the built-in prompt.</li>
   </ul>
@@ -157,37 +156,24 @@
   <p>Driver memory keeps the last 8 sessions per game, track and car in driver_memory.json on your PC. The file is never uploaded.</p>
   <p>It remembers best and typical clean laps, fuel per lap, hot tyre pressures and temperatures, peak brake temperatures, pit stops and where the car stepped out as a percentage of the lap.</p>
   <p>Remember me between sessions is on by default. Turning it off stops recording and recall; Forget everything clears saved driver memory.</p>
-  <p>Memory is ACC only for now: F1 frames have no track/car identity. The remembered summary can enter requests to your chosen AI provider; its spoken wording has not had a live-model check.</p>
+  <p>Available in ACC. The remembered summary can enter requests to your chosen AI provider.</p>
   </section>
   <section id="strategy">
   <h2>Strategy planner</h2>
   <p>Ask about stops or fuel in an ACC race: the strategy planner works out when to stop, how much to add and whether the fuel reaches the flag, in laps, never litres, with a 1-lap reserve.</p>
-  <p>Fuel saving is suggested only within a realistic limit. The planner does not model tyre wear, traffic, undercuts or safety cars; ACC pit-window units remain unverified, so that window is not used.</p>
+  <p>Fuel saving is suggested only within a realistic limit.</p>
   </section>
   <section id="setup-advice">
   <h2>Setup advice</h2>
   <p>Setup advice compares measured hot tyre pressures with the dry or wet pressure window and gives the change in psi per corner, using recent sessions or the live frame when memory is off.</p>
-  <p>This is not a setup builder. Brakes, camber, toe, aero, ride height, dampers, bars and gearing are not measured for setup advice, so it gives no values for them and no target cold pressure.</p>
-  <p>Setup advice is offered when you ask about setup or pressure in ACC, not during routine calls. The newest remembered session decides the change. For an unmeasured topic, the current spoken answer may be the generic “No read on that yet”.</p>
+  <p>Setup advice is offered when you ask about setup or pressure in ACC, not during routine calls. The newest remembered session decides the change.</p>
   </section>
   <section id="spotter">
-  <h2>Spotter beta</h2>
+  <h2>Spotter</h2>
   <p data-setting="spotter_mode">Settings &rarr; AI &rarr; <strong>Spotter</strong>. <span data-default="spotter_mode">Default: off.</span></p>
-  <p>The Spotter is ACC only, beta and off by default in Settings, AI, Spotter.</p>
+  <p>The Spotter is ACC only and off by default in Settings, AI, Spotter.</p>
   <p>A dedicated fast rivals feed drives car left, car right, three wide and clear calls. A call cuts the engineer off; it can resume afterwards, although a routine line that waits too long is dropped.</p>
-  <p>Tested in simulation, not verified on a real PC: opponent updates, left/right in traffic and audio timing. Run the ACC update-rate test first, and do not enable the Spotter in a race until it shows the feed is good enough.</p>
   </section>
-  <h2 id="dev">Developer page <a class="h-anchor" href="#dev" aria-label="Link to section: Developer page">#</a></h2>
-  <p data-setting="dev_mode"><strong>Developer mode</strong>. <span data-default="dev_mode">Default: off.</span>
-  Tap the app version five times to reveal the local <strong>Dev</strong> page. It shows detector states,
-  what the AI is given and recent events, with Force tick and Radio check actions. Reset app is in About.</p>
-  <p>The Wheel and buttons card shows one light per detected button, D-pad direction and held key, lit while it is held, to check whether a button can be bound for push to talk. Hardware compatibility is unverified on a real PC; try your device in this view.</p>
-  <p>Run the ACC update-rate test during a race with moving opponents for two minutes and keep acc_cadence.json for review.</p>
-  <p>The LMU recorder is a tester tool: start recording, add notes while driving, then stop to write the report zip. It does not make Le Mans Ultimate supported.</p>
-  <p>The Spotter live view shows feed age, rivals and direction; the demo plays a call over a long engineer line so you can hear the cut and resume.</p>
-  <p>Developer tools are local only. Wheel lights and the ACC and LMU tools are not verified on a real PC; the game tools need Windows. Browser checks used a mocked backend.</p>
-  <p>Le Mans Ultimate is not supported yet. Its game integration is fixture-only and unverified on a real PC; the recorder exists for testers.</p>
-
   <nav class="pager" aria-label="Previous and next page">
     <a class="prev" href="ai.html" aria-label="Previous: Choosing your AI"><span class="t">&larr; Choosing your AI</span></a>
     <a class="next" href="errors.html" aria-label="Next: Error codes"><span class="t">Error codes &rarr;</span></a>
