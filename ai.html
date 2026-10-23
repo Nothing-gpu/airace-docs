@@ -151,7 +151,7 @@
     <tbody>
       <tr><td><strong>Ollama Cloud</strong></td><td><code>OLLAMA_API_KEY</code></td><td><code>gpt-oss:120b</code>, <code>gemma4:31b</code>, <code>gpt-oss:20b</code></td><td>Free tier. Recommended.</td></tr>
       <tr><td><strong>Groq</strong></td><td><code>GROQ_API_KEY</code></td><td><code>openai/gpt-oss-120b</code>, <code>openai/gpt-oss-20b</code></td><td>Provider limits can change. The same key enables Groq transcription.</td></tr>
-      <tr><td><strong>Google Gemini</strong></td><td><code>GEMINI_API_KEY</code></td><td><code>gemini-3.5-flash-lite</code>, <code>gemini-3.1-flash-lite</code>, <code>gemma-4-31b-it</code>, <code>gemma-4-26b-a4b-it</code></td><td>Free tier, and every model has its own daily budget. One project's figures from Google AI Studio (yours are on its rate-limit page): the two Flash-Lite models 500 requests a day, 15 a minute; Gemma 4 14,400 a day but only 16K tokens a minute; the Flash models 20 a day. Google may use free-tier requests to improve its products.</td></tr>
+      <tr><td><strong>Google Gemini</strong></td><td><code>GEMINI_API_KEY</code></td><td><code>gemini-3.5-flash-lite</code>, <code>gemini-3.1-flash-lite</code>, <code>gemma-4-31b-it</code>, <code>gemma-4-26b-a4b-it</code></td><td>Free tier; every model has its own daily budget (below).</td></tr>
       <tr><td><strong>OpenRouter</strong></td><td><code>OPENROUTER_API_KEY</code></td><td><code>openai/gpt-oss-120b:free</code></td><td>Free models are shared and often congested.</td></tr>
       <tr><td><strong>Anthropic</strong></td><td><code>ANTHROPIC_API_KEY</code></td><td><code>claude-haiku-4-5-20251001</code></td><td>Paid.</td></tr>
       <tr><td><strong>Custom</strong> (OpenAI-compatible)</td><td><code>CUSTOM_API_KEY</code></td><td>you name it</td><td>Any <code>/chat/completions</code> endpoint. Set the URL and model in <strong>Settings &rarr; AI &rarr; Custom API endpoint</strong>.</td></tr>
@@ -159,6 +159,7 @@
     </tbody>
   </table></div>
   <p>Any model name can be typed into a chain entry; the presets are suggestions.</p>
+  <p><strong>Gemini&rsquo;s free budgets.</strong> Google publishes no free table; these are one project&rsquo;s figures from Google AI Studio (your own are on its rate-limit page). Each model counts on its own: the two Flash-Lite models allow 500 requests a day and 15 a minute; Gemma 4 allows 14,400 a day but only 16K tokens a minute, about one engineer call a minute; the Flash models allow 20 a day. A refused call goes to the next entry in the chain. On the free tier Google may use the requests to improve its products.</p>
   <h3 id="custom-endpoints">Other providers through Custom</h3>
   <p>The wizard's <strong>List more providers</strong> offers OpenAI, Together AI, Fireworks, DeepInfra,
   Cerebras, xAI, Mistral, DeepSeek and others. They all use the one <strong>Custom</strong> slot: one
