@@ -159,7 +159,7 @@
     </tbody>
   </table></div>
   <p>Any model name can be typed into a chain entry; the presets are suggestions.</p>
-  <p><strong>Gemini&rsquo;s free budgets.</strong> Google publishes no free table; these are one project&rsquo;s figures from Google AI Studio (your own are on its rate-limit page). Each model counts on its own: the two Flash-Lite models allow 500 requests a day and 15 a minute; Gemma 4 allows 14,400 a day but only 16K tokens a minute, about one engineer call a minute; the Flash models allow 20 a day. A refused call goes to the next entry in the chain. On the free tier Google may use the requests to improve its products.</p>
+  <p><strong>Gemini&rsquo;s free budgets.</strong> Google publishes no free table; these are one project&rsquo;s figures from Google AI Studio (your own are on its rate-limit page). Each model counts on its own: the two Flash-Lite models allow 500 requests a day and 15 a minute; Gemma 4 allows 14,400 a day and 16K tokens a minute, about three engineer calls a minute with the default prompt, but it was slow in a short test (7 to 44 seconds a call, and a driver question is given 8), so it suits the end of a chain better than the front; the Flash models allow 20 a day. A refused call goes to the next entry in the chain. On the free tier Google may use the requests to improve its products.</p>
   <h3 id="custom-endpoints">Other providers through Custom</h3>
   <p>The wizard's <strong>List more providers</strong> offers OpenAI, Together AI, Fireworks, DeepInfra,
   Cerebras, xAI, Mistral, DeepSeek and others. They all use the one <strong>Custom</strong> slot: one
